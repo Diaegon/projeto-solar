@@ -41,18 +41,104 @@ O programa recebe os dados do cliente e gera automaticamente toda a documentaç�
    - Cadastrar os inversores com a quantidade de string de cada modelo para que se possa fazer uma lógica adaptativa para que o texto se modifique de acordo com o inversor.
    - Diminuir o código "equacoes.py" para que o programa adicione uma quantidade ilimitada de inversores/placas de acordo com o input, sem a limitação de 3 tipos de inversores diferentes. 
 
-## Como usar (em desenvolvimento)
- DADOS DE ENTRADA:
- -Inicialmente os dados de entradas estão em formato .json, eles tem que ser preenchidos com strings, inteiros ou null-format. inteiros para valores de potencia, quantidade, etc. e string para o restante.
- -os dados de entrada são os dados pessoais do cliente juntamente com os dados do projetista, procurador/homologador, material utilizado e o padrão elétrico residencial do cliente.
- MEMORIAL DESCRITIVO / PROCURAÇÃO:
- -O memorial e procuração serão criados rodando no terminal o script gerar_pdf.py, ele vai pegar os dados de input, organizar e realizar os cálculos necessários para criar um memorial descritivo do sistema instalado
- de acordo com as normas vigentes.
- DIAGRAMA UNIFILAR:
- -O diagrama unifilar usa uma lógica de template, onde temos modelos pré-estabelecidos com 1, 2 ou 3 inversores e o programa vai decidir em qual desenhar a partir dos dados de entrada utilizando a biblioteca PyMuPDF.
- FORMULARIO ENEL-CE:
- -A mesma lógica de template aplicada no diagrama unifilar é aplicada aqui, tomando como base os formularios da ENEL-CE o programa escreve os dados do cliente no formulário correto de acordo com o projeto.
+# Como Usar
 
- para gerar todos os documentos basta instalar o poetry e dependências e na pasta raiz do arquivo rodar o script main.py.
+> ⚠️ **Projeto em desenvolvimento**
 
+## Pré-requisitos
+
+- Python 3.x
+- Poetry (gerenciador de dependências)
+
+## Instalação
+
+1. **Clone o repositório**
+   ```bash
+   git clone <url-do-repositório>
+   cd <nome-do-projeto>
+   ```
+
+2. **Instale o Poetry**
+   
+   Se ainda não tiver o Poetry instalado, siga as instruções em [python-poetry.org](https://python-poetry.org/docs/#installation)
+
+3. **Instale as dependências do projeto**
+   ```bash
+   poetry install
+   ```
+
+4. **Baixe os arquivos de suporte**
+   
+   Faça o download da pasta `support-files` através [deste link](https://drive.google.com/drive/folders/1wS_3gRbTehiSYByUsZgDKmRfIrHZ1TSS?usp=drive_link) e coloque-a na raiz do projeto.
+
+## Configuração dos Dados de Entrada
+
+Os dados de entrada estão em formato JSON e devem ser preenchidos antes da execução.
+
+### Formato dos Dados
+
+- **Tipos de valores aceitos:**
+  - `string`: para textos (nomes, endereços, etc.)
+  - `integer`: para valores numéricos (potência, quantidade, etc.)
+  - `null`: para campos opcionais ou vazios
+
+### Dados Necessários
+
+Os arquivos JSON devem conter:
+- Dados pessoais do cliente
+- Dados do projetista
+- Informações do procurador/homologador
+- Especificações dos materiais utilizados
+- Padrão elétrico residencial do cliente
+
+Edite os arquivos de entrada de acordo com as especificações do projeto a ser desenvolvido.
+
+## Execução
+
+### Gerar Todos os Documentos
+
+Para gerar todos os documentos de uma só vez, execute:
+
+```bash
+poetry run python main.py
+```
+
+### Gerar Documentos Específicos
+
+#### Memorial Descritivo e Procuração
+
+```bash
+poetry run python gerar_pdf.py
+```
+
+Este script:
+- Processa os dados de entrada
+- Realiza os cálculos necessários
+- Gera o memorial descritivo do sistema conforme as normas vigentes
+- Cria a procuração
+
+#### Diagrama Unifilar
+
+O diagrama unifilar utiliza templates pré-estabelecidos para 1, 2 ou 3 inversores. O programa seleciona automaticamente o template adequado baseado nos dados de entrada e utiliza a biblioteca **PyMuPDF** para renderização.
+
+#### Formulário ENEL-CE
+
+Aplica a mesma lógica de templates do diagrama unifilar. O programa preenche automaticamente o formulário correto da ENEL-CE com os dados do cliente de acordo com as especificações do projeto.
+
+## Estrutura do Projeto
+
+```
+.
+├── support-files/          # Arquivos de suporte (templates, etc.)
+├── main.py                 # Script principal
+├── gerar_pdf.py           # Geração de memorial e procuração
+├── pyproject.toml         # Configuração do Poetry
+└── [arquivos JSON]        # Dados de entrada
+```
+
+## Observações
+
+- Certifique-se de que todos os campos obrigatórios nos arquivos JSON estejam preenchidos
+- Os documentos gerados seguem as normas técnicas vigentes
+- Os templates são específicos para projetos da área de concessão da ENEL-CE
  
