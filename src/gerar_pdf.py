@@ -1,17 +1,16 @@
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from utils.estilos import styles
-from utils.helpers import linha_sumario, add_page_number, data_de_hoje
-from utils.equacoes import (equacao, equacao2, equacao3, equacao4, insert_equation, render_equation_to_image)
-from textos.textos import (texto_introducao, texto_procuracao, texto_dimensionamento_protecao2, texto_dimensionamento_protecao3, texto_loc, texto_loc2, texto_carginst, texto_calculo_demanda, texto_calculo_demanda2,
+from src.utils.estilos import styles
+from src.utils.helpers import linha_sumario, add_page_number, data_de_hoje
+from src.utils.equacoes import (equacao, equacao2, equacao3, equacao4, insert_equation, render_equation_to_image)
+from src.textos.textos import (texto_introducao, texto_procuracao, texto_dimensionamento_protecao2, texto_dimensionamento_protecao3, texto_loc, texto_loc2, texto_carginst, texto_calculo_demanda, texto_calculo_demanda2,
     texto_calculo_fc, texto_geradorfv, texto_potenciafv, texto_calculo_enegiagerada, texto_diagramas, texto_parametrizacao, texto_instalacao, texto_dimensionamento_protecao, texto_disjuntores, texto_sinalizacao, texto_diagramauni)
-from utils.imagens import img1, img2, img3
-from utils.tabelas import (tabeladedados, tabela_assinatura, tabela_localizacao, tabelapainel, tabela_parametros_tensao_inversor, tabela_parametros_frequencia_inversor, tabela_parametros_fp_inversor, tabela_queda_tensao)
-
+from src.utils.imagens import img1, img2, img3
+from src.utils.tabelas import (tabeladedados, tabela_assinatura, tabela_localizacao, tabelapainel, tabela_parametros_tensao_inversor, tabela_parametros_frequencia_inversor, tabela_parametros_fp_inversor, tabela_queda_tensao)
 
 def gerar_memorial(inputs):
-    doc = SimpleDocTemplate(r"C:\Users\DIEGO\Desktop\code\projetosolar\output\memorial_geracao_distribuida.pdf", pagesize=A4, leftMargin=2*cm, rightMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
+    doc = SimpleDocTemplate(r"output\memorial_geracao_distribuida.pdf", pagesize=A4, leftMargin=2*cm, rightMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
 
     story = []
     # CAPA @@ NÃO MUDA NADA

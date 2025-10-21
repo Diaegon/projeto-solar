@@ -1,10 +1,15 @@
 import json
 from reportlab.platypus import Table, Paragraph, TableStyle
-from utils.helpers import data_de_hoje, nome_cliente, cpf_cliente
-from utils.estilos import styles, estilotabela, estilotabelaloc, estilo_tabela_parametros, estilo_assinatura
-from utils.equacoes import corrente_saida, tensao_queda, potenciaefetiva, energia_gerada,texto_corrente_saida, inversores_tensao, texto_cabos, vmp_modulos_tabela, potencia_modulos_tabela, imp_modulos_tabela, voc_modulos_tabela, isc_modulos_tabela, inversores_potencia, cabo_inversor1, inversor_tensao
-caminho_absoluto = r"C:\Users\DIEGO\Desktop\code\projetosolar\inputs\input_solar.json"
-with open(caminho_absoluto, 'r') as f:
+from src.utils.helpers import data_de_hoje, nome_cliente, cpf_cliente
+from src.utils.estilos import styles, estilotabela, estilotabelaloc, estilo_tabela_parametros, estilo_assinatura
+from src.utils.equacoes import corrente_saida, tensao_queda, potenciaefetiva, energia_gerada,texto_corrente_saida, inversores_tensao, texto_cabos, vmp_modulos_tabela, potencia_modulos_tabela, imp_modulos_tabela, voc_modulos_tabela, isc_modulos_tabela, inversores_potencia, cabo_inversor1, inversor_tensao
+
+from src.config import INPUTS_DIR
+
+
+caminho_absoluto = INPUTS_DIR / "input_solar.json"
+
+with open(caminho_absoluto, 'r', encoding='utf-8') as f:
     inputs = json.load(f)
 
 

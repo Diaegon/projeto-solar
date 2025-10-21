@@ -1,20 +1,20 @@
 import fitz
-import json
-from utils.equacoes import (quantidade_inversor, quantidade_inversor2, quantidade_inversor3, paineis_diagrama,  inversor_diagrama,  potencia_total_unifilar, 
+from src.utils.equacoes import (quantidade_inversor, quantidade_inversor2, quantidade_inversor3, paineis_diagrama,  inversor_diagrama,  potencia_total_unifilar, 
                             cabo_inversor1, inversor_tensao,  texto_disjuntor1_unifilar, texto2_disjuntor1_unifilar, disjuntor_geral, quantidade_total_painel, 
                             inversor_total_unifilar, tensao_local, texto2_disjuntorgeral_unifilar, texto_disjuntorgeral_unifilar)
 if quantidade_inversor2 not in [None,0]:
-    from utils.equacoes import (paineis_diagrama2, inversor2_diagrama,cabo_inversor2, inversor_tensao2,texto_disjuntor2_unifilar,texto2_disjuntor2_unifilar,)
+    from src.utils.equacoes import (paineis_diagrama2, inversor2_diagrama,cabo_inversor2, inversor_tensao2,texto_disjuntor2_unifilar,texto2_disjuntor2_unifilar,)
 if quantidade_inversor3 not in [None,0]:
-    from utils.equacoes import (paineis_diagrama3,inversor3_diagrama,cabo_inversor3,inversor_tensao3,texto_disjuntor3_unifilar,texto2_disjuntor3_unifilar)
+    from src.utils.equacoes import (paineis_diagrama3,inversor3_diagrama,cabo_inversor3,inversor_tensao3,texto_disjuntor3_unifilar,texto2_disjuntor3_unifilar)
 
-from utils.helpers import (cft_crea, projetista, projeto, data_de_hoje, municipio_obra, logradouro_obra, numero_obra, complemento_obra, bairro_obra,
+from src.utils.helpers import (cft_crea, projetista, projeto, data_de_hoje, municipio_obra, logradouro_obra, numero_obra, complemento_obra, bairro_obra,
                             nome_cliente)
+
 def gerar_diagramaunifilar():
-    caminho_inversor1 =   r'C:\Users\DIEGO\Desktop\code\projetosolar\templates_diagramaunifilar\diagrama1.pdf'  
-    caminho_inversor2 = r'C:\Users\DIEGO\Desktop\code\projetosolar\templates_diagramaunifilar\diagrama2.pdf'
-    caminho_inversor3 = r'C:\Users\DIEGO\Desktop\code\projetosolar\templates_diagramaunifilar\diagrama3.pdf'
-    caminho_output = r'C:\Users\DIEGO\Desktop\code\projetosolar\output\diagrama.pdf'
+    caminho_inversor1 =   r'support-files\templates_diagramaunifilar\diagrama1.pdf'  
+    caminho_inversor2 = r'support-files\templates_diagramaunifilar\diagrama2.pdf'
+    caminho_inversor3 = r'support-files\templates_diagramaunifilar\diagrama3.pdf'
+    caminho_output = r'output\diagrama.pdf'
 
     if quantidade_inversor not in [None,0]:
         pdf_base = caminho_inversor1

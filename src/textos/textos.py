@@ -1,16 +1,19 @@
 import json
 from datetime import datetime 
 from dateutil.relativedelta import relativedelta
-from utils.equacoes import (potenciaefetiva, energia_gerada, tensao_queda,tensao_local, texto_finalpaineis, texto_finalinversor, texto_painel_tipo, texto_disposicao,corrente_max_cabo1, 
+from src.utils.equacoes import (potenciaefetiva, energia_gerada, tensao_queda,tensao_local, texto_finalpaineis, texto_finalinversor, texto_painel_tipo, texto_disposicao,corrente_max_cabo1, 
 quantidade_total_painel, texto_potencia_individual_paineis, inversores_potencia, texto_cabos, carga_cliente, classeconsumo, consumo_energia,
  corrente_max_cabos, texto_tensao_individual_paineis, potencia_totalpainel, disjuntor_geral, texto_tensao_queda, fornecimento, texto_disjuntores_protecao, cabo_inversor1,disjuntor_protecao1 )
-from utils.helpers import (nome_cliente, cpf_cliente, uc_cliente, fornecimento_cliente, logradouro_cliente, numero_cliente, complemento_cliente, municipio_cliente, estado_cliente, cep_cliente,
+from src.utils.helpers import (nome_cliente, cpf_cliente, uc_cliente, fornecimento_cliente, logradouro_cliente, numero_cliente, complemento_cliente, municipio_cliente, estado_cliente, cep_cliente,
     logradouro_obra, numero_obra, complemento_obra, municipio_obra, estado_obra, cep_obra, latitude_obra, longitude_obra, nome_procurador, telefone_procurador, cpf_procurador, rg_procurador, logradouro_procurador, numero_casa_procurador, complemento_procurador, municipio_procurador, estado_procurador, cep_procurador)  
 
-caminho_absoluto = r"C:\Users\DIEGO\Desktop\code\projetosolar\inputs\input_solar.json"
-with open(caminho_absoluto, 'r') as f:
-    inputs = json.load(f)
+from src.config import INPUTS_DIR
 
+
+caminho_absoluto = INPUTS_DIR / "input_solar.json"
+
+with open(caminho_absoluto, 'r', encoding='utf-8') as f:
+    inputs = json.load(f)
 
 data_de_hoje = datetime.now()
 data_futura = data_de_hoje+relativedelta(months=1)

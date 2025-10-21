@@ -1,13 +1,13 @@
 import fitz
-from utils.equacoes import (inversor_total_unifilar, carga_cliente, tensao_local, inversor_total_unifilar, potencia_total_unifilar)
-from utils.helpers import (cft_crea, data_de_hoje, uc_cliente, ramal_cliente, logradouro_obra, fornecimento_cliente, numero_obra, complemento_obra, cep_obra, bairro_obra, email_cliente, telefone_cliente, cpf_cliente, latitude_obra, longitude_obra,
+from src.utils.equacoes import (inversor_total_unifilar, carga_cliente, tensao_local, inversor_total_unifilar, potencia_total_unifilar)
+from src.utils.helpers import (cft_crea, data_de_hoje, uc_cliente, ramal_cliente, logradouro_obra, fornecimento_cliente, numero_obra, complemento_obra, cep_obra, bairro_obra, email_cliente, telefone_cliente, cpf_cliente, latitude_obra, longitude_obra,
                             classe_codigo,classe_cliente,fornecimento_cliente, projetista, projeto, data_de_hoje, nome_procurador, email_procurador, telefone_procurador, municipio_obra, logradouro_obra, numero_obra, complemento_obra, bairro_obra,
                             nome_cliente)
 
 
-caminho_doc =   r'C:\Users\DIEGO\Desktop\code\projetosolar\templates_formularios\formulario_microgeracaoENEL.pdf'  
-caminho_doc_10kw = r'C:\Users\DIEGO\Desktop\code\projetosolar\templates_formularios\formulario_microgeracaoENEL10kw.pdf'  
-output_formulario = r'C:\Users\DIEGO\Desktop\code\projetosolar\output\formulario.pdf'
+caminho_doc =   r'support-files\templates_formularios\formulario_microgeracaoENEL.pdf'  
+caminho_doc_10kw = r'support-files\templates_formularios\formulario_microgeracaoENEL10kw.pdf'  
+output_formulario = r'output\formulario.pdf'
 
 def gerar_formulario():
     if inversor_total_unifilar / 1000 <= 10:

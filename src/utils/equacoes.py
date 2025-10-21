@@ -1,9 +1,12 @@
 import json
 import matplotlib.pyplot as plt
 from reportlab.platypus import Image
+from src.config import INPUTS_DIR
 
-caminho_absoluto = r"C:\Users\DIEGO\Desktop\code\projetosolar\inputs\input_solar.json"
-with open(caminho_absoluto, 'r') as f:
+
+caminho_absoluto = INPUTS_DIR / "input_solar.json"
+
+with open(caminho_absoluto, 'r', encoding='utf-8') as f:
     inputs = json.load(f)
 
 
