@@ -1,0 +1,113 @@
+{
+    "dados_cliente": {
+        "nome": "DIEGO  armando MARADONA",
+        "cpf": null,
+        "Datanascimento": "15/07/1999",
+        "razaosocial": null,
+        "nomefantasia": null,
+        "cnpj": "123456789",
+        "rg": "1234567",
+        "telefone": "122312412",
+        "email": "IAJSAIEYUAAWEAD@ASUHAUSH",
+        "uc": "1235531",
+        "carga": 12,
+        "disjuntor_geral": 32,
+        "energia": 1000,
+        "classeconsumo": "RESIDENCIAL",
+        "fornecimento": "MONOFASICO",
+        "ramal": "QWQWWQ",
+        "tensao_residencia": 380.0,
+        "quantidade_painel": 12,
+        "quantidade_painel2": null,
+        "quantidade_painel3": null,
+        "quantidade_inversor": 1,
+        "quantidade_inversor2": null,
+        "quantidade_inversor3": null
+    },
+    "inversor": {
+        "marca": "PHB",
+        "modelo": "PHB20K-SDT",
+        "potencia": 20000.0,
+        "numero_fases": "trifasico"
+    },
+    "inversor2": {
+        "marca": null,
+        "modelo": null,
+        "potencia": null,
+        "numero_fases": null
+    },
+    "inversor3": {
+        "marca": null,
+        "modelo": null,
+        "potencia": null,
+        "numero_fases": null
+    },
+    "painel": {
+        "marca": "DAH",
+        "modelo": "DHM-72X10-530",
+        "potencia": 530,
+        "vp": 41.6,
+        "imp": 12.74,
+        "voc": 49.4,
+        "isc": 13.54,
+        "tipo": "monocristralino"
+    },
+    "painel2": {
+        "marca": null,
+        "modelo": null,
+        "potencia": null,
+        "vp": null,
+        "imp": null,
+        "voc": null,
+        "isc": null,
+        "tipo": "monocristralino"
+    },
+    "painel3": {
+        "marca": null,
+        "modelo": null,
+        "potencia": null,
+        "vp": null,
+        "imp": null,
+        "voc": null,
+        "isc": null,
+        "tipo": "monocristralino"
+    },
+    "endereco": {
+        "logradouro": "QWQWQW",
+        "numero_casa": 12,
+        "complemento": "QW",
+        "municipio": "FORTALEZA",
+        "cep": "QW",
+        "bairro": "QQWQ",
+        "estado": "CEARA",
+        "latitude": -3.12133,
+        "longitude": -33.12345
+    },
+    "residencia_cliente": {
+        "logradouro": "WQWQW",
+        "numero_casa": "12Q",
+        "complemento": "QQW",
+        "municipio": "QW",
+        "cep": "QW",
+        "bairro": "QW",
+        "estado": "QW"
+    },
+    "projeto": {
+        "projetista": "DIEGO CANAFISTULA",
+        "cft_crea": "121212121",
+        "rubrica": "DT CANAFISTULA"
+    },
+    "dados_procurador": {
+        "nome": "DIEGO CANAFISTULA",
+        "cpf": "1213141",
+        "rg": "121213414",
+        "telefone": "12121314",
+        "email": "diego.canafistula@gmail.com",
+        "logradouro_procurador": "12121 ",
+        "numero_casa_procurador": 125,
+        "complemento_procurador": "casa 4",
+        "municipio_procurador": "Fortaleza",
+        "cep_procurador": "60330270",
+        "estado_procurador": "ceara"
+    }
+}
