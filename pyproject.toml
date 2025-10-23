@@ -12,7 +12,8 @@ dependencies = [
     "reportlab (>=4.4.4,<5.0.0)",
     "python-dateutil (>=2.9.0.post0,<3.0.0)",
     "matplotlib (>=3.10.7,<4.0.0)",
-    "pymupdf (>=1.26.5,<2.0.0)"
+    "pymupdf (>=1.26.5,<2.0.0)",
+    "pydantic[email] (>=2.12.3,<3.0.0)",
 ]
 
 [tool.poetry]

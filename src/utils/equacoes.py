@@ -1,20 +1,19 @@
-import json
 import matplotlib.pyplot as plt
 from reportlab.platypus import Image
-from src.config import INPUTS_DIR
+from src.utils.helpers import projeto
 
 
-caminho_absoluto = INPUTS_DIR / "input_solar.json"
-
-with open(caminho_absoluto, 'r', encoding='utf-8') as f:
-    inputs = json.load(f)
+print(projeto)
 
 
-carga_cliente = inputs['dados_cliente']['carga']
-consumo_energia = inputs['dados_cliente']['energia']
+#dados importantes para os calculos
+carga_cliente = projeto.carga_instalada_kw * 1000
+consumo_energia = projeto.energia_media_mensal_kwh
+classeconsumo = projeto.classe_consumo
+
 resultado = consumo_energia / 720
 fatordecarga = resultado / carga_cliente
-classeconsumo = inputs['dados_cliente']['classeconsumo']
+
 
 #EQ. QUEDA DE TENSÃO
 equacao4 = fr"$\Delta V \% = \frac{{200*\rho*L_c*I_c*cos\varphi}}{{S_c*V_f}}$"
@@ -44,6 +43,7 @@ def numero_de_fases(numero_fases):
         multiplicador = 1.732
         inversor_tensao = 380    
     return multiplicador, inversor_tensao
+
 def corrente_saida_calc(inversor_potencia, multiplicador, inversor_tensao):
     corrente_saida = inversor_potencia / (multiplicador * inversor_tensao)
     return corrente_saida
@@ -81,6 +81,7 @@ def disjuntor_protecao_inversores(corrente_saida):
         disjuntor_protecao = 80
         corrente_max_cabo = 89
     return cabo_inversor, corrente_max_cabo, disjuntor_protecao
+
 def quantidade_string(inversor_potencia):
     if inversor_potencia <= 7000:
         quantidade_stringsinversor1 = 2
@@ -92,12 +93,31 @@ def quantidade_string(inversor_potencia):
         quantidade_stringsinversor1 = 6 
     return quantidade_stringsinversor1
 
+def get_classe_codigo(classe_cliente: str) -> str:
+    classe_codigo = ""
+    if classe_cliente == "residencial":
+        classe_codigo = "B1"
+    elif classe_cliente == "rural":
+        classe_codigo = "B2"
+    elif classe_cliente == "comercial":
+        classe_codigo = "B3"
+
+    return classe_codigo
+
 
 #INPUTS IMPORTANTES
-disjuntor_geral = inputs['dados_cliente']['disjuntor_geral']
+disjuntor_geral = projeto.disjuntor_geral_amperes
+print( type(disjuntor_geral))
+print( disjuntor_geral)
+breakpoint()
+
+def escreve_texto_unifilar():
+    pass
+#transferir para um fazedor de texto.
 disjuntor_geral = str(disjuntor_geral)
 fornecimento = inputs['dados_cliente']['fornecimento']
 tensao_local = inputs['dados_cliente']['tensao_residencia']
+
 texto_disjuntorgeral_unifilar = f"DISJUNTOR\nMONOFÁSICO\n \n{disjuntor_geral} A - 220V" 
 texto2_disjuntorgeral_unifilar = f"DISJUNTOR\nTRIFÁSICO\n \n{disjuntor_geral} A - 380/220V" 
 
@@ -111,8 +131,10 @@ inversor_marca = inputs['inversor']['marca']
 inversor_modelo = inputs['inversor']['modelo']
 numero_fases = inputs['inversor']['numero_fases']
 quantidade_inversor = inputs['dados_cliente']['quantidade_inversor']
+
 multiplicador, inversor_tensao = numero_de_fases(numero_fases)
 corrente_saida = corrente_saida_calc(inversor_potencia, multiplicador, inversor_tensao)
+
 equacao3 = fr"$I_{{\mathrm{{AG}}}} = \frac{{\mathrm{{potencia\ nominal }}}}{{\mathrm{{Tensao\ nominal * {multiplicador}}}}} = \frac{{{inversor_potencia}}}{{{inversor_tensao * multiplicador}}} = {corrente_saida:.2f}\ A$"
 cabo_inversor1, corrente_max_cabo1, disjuntor_protecao1 = disjuntor_protecao_inversores(corrente_saida)
 inversor = f"{quantidade_inversor} " + "inversor" + f" {inversor_marca} {inversor_modelo}"

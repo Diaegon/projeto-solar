@@ -1,113 +1,150 @@
 {
-    "dados_cliente": {
-        "nome": "Dotô PAblo",
-        "cpf": null,
-        "Datanascimento": "15/07/1999",
-        "razaosocial": null,
-        "nomefantasia": null,
+    "cliente": {
+        "id_cliente": null,
+        "nome_cliente": "Dotô PAblo",
+        "cpf": "121212",
+        "data_nascimento": "15/07/1999",
+        "razao_social": null,
+        "nome_fantasia": null,
         "cnpj": "123456789",
         "rg": "1234567",
-        "telefone": "122312412",
-        "email": "IAJSAIEYUAAWEAD@ASUHAUSH",
-        "uc": "1235531",
-        "carga": 12,
-        "disjuntor_geral": 32,
-        "energia": 1000,
-        "classeconsumo": "RESIDENCIAL",
-        "fornecimento": "MONOFASICO",
-        "ramal": "QWQWWQ",
-        "tensao_residencia": 380.0,
-        "quantidade_painel": 12,
-        "quantidade_painel2": null,
-        "quantidade_painel3": null,
-        "quantidade_inversor": 1,
-        "quantidade_inversor2": null,
-        "quantidade_inversor3": null
+        "telefone_cliente": "122312412",
+        "email_cliente": "joao@email.com"
     },
+
+    "endereco_cliente": {
+        "logradouro_cliente": "WQWQW",
+        "numero_casa_cliente": "12Q",
+        "complemento_casa_cliente": "QQW",
+        "cep_cliente": "QW",
+        "bairro_cliente": "QW",
+        "cidade_cliente": "QW",
+        "estado_cliente": "QW"
+    },
+
+    "endereco_obra": {
+        "logradouro_obra": "QWQWQW",
+        "numero_obra": "12",
+        "complemento_obra": "QW",
+        "cep_obra": "QW",
+        "bairro_obra": "QQWQ",
+        "cidade_obra": "FORTALEZA",
+        "estado_obra": "CEARA",
+        "latitude_obra": -3.12133,
+        "longitude_obra": -33.12345
+    },
+
+    "projetista": {
+        "id_projetista": null,
+        "nome_projetista": "DIEGO CANAFISTULA",
+        "creci_projetista": "121212121",
+        "rubrica_projetista": "DT CANAFISTULA",
+        "telefone_projetista": "12121212",
+        "email_projetista": "projeto@email.com"
+                },
+    
+    "dados_procurador": {
+        "id_procurador": null,
+        "nome_procurador": "DIEGO CANAFISTULA",
+        "cpf_procurador": "1213141",
+        "rg_procurador": "121213414",
+        "telefone_procurador": "12121314",
+        "email_procurador": "diego.canafistula@gmail.com",
+        "logradouro_procurador": "12121 ",
+        "numero_casa_procurador": "125",
+        "complemento_procurador": "casa 4",
+        "cep_procurador": "60330270",
+        "bairro_procurador": "Jangurussu",
+        "cidade_procurador": "Fortaleza",
+        "estado_procurador": "ceara"
+    },
+    
+    
+    "projeto": {
+        "id_projeto": null, 
+        "numero_unidade_consumidora": "1235531",
+        "carga_instalada_kw": 12,
+        "disjuntor_geral_amperes": 32,
+        "energia_media_mensal_kwh": 1000,
+        "classe_consumo": "residencial",
+        "tipo_fornecimento": "monofasico",
+        "ramal_energia": "aereo",
+        "data_projeto": "2024-06-01",
+        "quantidade_placas": 12,
+        "quantidade_placas2": null,
+        "quantidade_placas3": null,
+        "quantidade_inversores": 1,
+        "quantidade_inversores2": null,
+        "quantidade_inversores3": null
+    },
+
     "inversor": {
-        "marca": "PHB",
-        "modelo": "PHB20K-SDT",
-        "potencia": 20000.0,
-        "numero_fases": "trifasico"
+        "id_inversor": null,
+        "marca_inversor": "PHB",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": null
     },
+
     "inversor2": {
-        "marca": null,
-        "modelo": null,
-        "potencia": null,
-        "numero_fases": null
+        "id_inversor": null,
+        "marca_inversor": "PHB",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": null
     },
     "inversor3": {
-        "marca": null,
-        "modelo": null,
-        "potencia": null,
-        "numero_fases": null
+        "id_inversor": null,
+        "marca_inversor": "PHB",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": null
     },
-    "painel": {
-        "marca": "DAH",
-        "modelo": "DHM-72X10-530",
-        "potencia": 530,
-        "vp": 41.6,
-        "imp": 12.74,
-        "voc": 49.4,
-        "isc": 13.54,
-        "tipo": "monocristralino"
+   
+    "placa": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
     },
-    "painel2": {
-        "marca": null,
-        "modelo": null,
-        "potencia": null,
-        "vp": null,
-        "imp": null,
-        "voc": null,
-        "isc": null,
-        "tipo": "monocristralino"
+
+    "placa2": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
     },
-    "painel3": {
-        "marca": null,
-        "modelo": null,
-        "potencia": null,
-        "vp": null,
-        "imp": null,
-        "voc": null,
-        "isc": null,
-        "tipo": "monocristralino"
-    },
-    "endereco": {
-        "logradouro": "QWQWQW",
-        "numero_casa": 12,
-        "complemento": "QW",
-        "municipio": "FORTALEZA",
-        "cep": "QW",
-        "bairro": "QQWQ",
-        "estado": "CEARA",
-        "latitude": -3.12133,
-        "longitude": -33.12345
-    },
-    "residencia_cliente": {
-        "logradouro": "WQWQW",
-        "numero_casa": "12Q",
-        "complemento": "QQW",
-        "municipio": "QW",
-        "cep": "QW",
-        "bairro": "QW",
-        "estado": "QW"
-    },
-    "projeto": {
-        "projetista": "DIEGO CANAFISTULA",
-        "cft_crea": "121212121",
-        "rubrica": "DT CANAFISTULA"
-    },
-    "dados_procurador": {
-        "nome": "DIEGO CANAFISTULA",
-        "cpf": "1213141",
-        "rg": "121213414",
-        "telefone": "12121314",
-        "email": "diego.canafistula@gmail.com",
-        "logradouro_procurador": "12121 ",
-        "numero_casa_procurador": 125,
-        "complemento_procurador": "casa 4",
-        "municipio_procurador": "Fortaleza",
-        "cep_procurador": "60330270",
-        "estado_procurador": "ceara"
+
+    "placa3": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
     }
+
+
 }
