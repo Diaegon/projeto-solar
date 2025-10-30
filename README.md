@@ -141,4 +141,29 @@ Aplica a mesma lógica de templates do diagrama unifilar. O programa preenche au
 - Certifique-se de que todos os campos obrigatórios nos arquivos JSON estejam preenchidos
 - Os documentos gerados seguem as normas técnicas vigentes
 - Os templates são específicos para projetos da área de concessão da ENEL-CE
+
+
+
+
+objetivo de estrutura final
+
+meu_projeto/
+│
+├── models/
+│   ├── __init__.py
+│   ├── sistema_instalado.py    # Schema/Model
+│   ├── inversor.py
+│   ├── placa.py
+│   └── procurador.py
+│
+├── factories/
+│   ├── __init__.py
+│   ├── sistema_factory.py      # Factory para criar sistemas
+│   └── equipamento_factory.py  # Factory para criar equipamentos
+│
+├── services/
+│   ├── __init__.py
+│   └── sistema_service.py      # Lógica de negócio complexa
+│
+└── main.py
  

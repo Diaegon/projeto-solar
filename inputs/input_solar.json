@@ -34,6 +34,308 @@
         "longitude_obra": -33.12345
     },
 
+    
+    "projeto": {
+        "id_projeto": null, 
+        "numero_unidade_consumidora": "1235531",
+        "carga_instalada_kw": 12,
+        "disjuntor_geral_amperes": 32,
+        "energia_media_mensal_kwh": 1000,
+        "classe_consumo": "residencial",
+        "tipo_fornecimento": "monofasico",
+        "ramal_energia": "aereo",
+        "data_projeto": "2024-06-01",
+        "quantidade_sistemas_instalados": 1
+    },
+    
+    "sistema_instalado1":{
+        "quantidade_inversor": 1,
+        "quantidade_total_placas_do_sistema":{
+
+            "quantidade_placas": 12,
+            "quantidade_placas2": 13,
+            "quantidade_placas3": 11,
+            "quantidade_placas4": null
+
+        },
+        
+        "inversor":{ 
+        "id_inversor": null,
+        "marca_inversor": "PHB",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": 6
+    },
+
+        "placa": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa2": {
+        "id_placa": null,
+        "marca_placa": "JINK",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },    
+        "placa3": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa4": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    }     
+   
+   
+    },
+
+    "sistema_instalado2":{
+        "quantidade_inversor": 1,
+        "quantidade_total_placas_do_sistema":{
+
+            "quantidade_placas": 12,
+            "quantidade_placas2": 12,
+            "quantidade_placas3": 23,
+            "quantidade_placas4": 11
+
+        },
+        
+        "inversor":{ 
+        "id_inversor": null,
+        "marca_inversor": "SOLPLANET",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": 8
+    },
+
+        "placa": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa2": {
+        "id_placa": null,
+        "marca_placa": "JINK",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },    
+        "placa3": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa4": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    }     
+   
+    },
+
+    "sistema_instalado3":{
+        "quantidade_inversor": 1,
+        "quantidade_total_placas_do_sistema":{
+
+            "quantidade_placas": 12,
+            "quantidade_placas2": 12,
+            "quantidade_placas3": 12,
+            "quantidade_placas4": 21
+
+        },
+        
+        "inversor":{ 
+        "id_inversor": null,
+        "marca_inversor": "SOLIS",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": 8
+    },
+
+        "placa": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa2": {
+        "id_placa": null,
+        "marca_placa": "JINK",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },    
+        "placa3": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa4": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    }     
+    },
+
+    "sistema_instalado4":{
+        "quantidade_inversor": 1,
+        "quantidade_total_placas_do_sistema":{
+
+            "quantidade_placas": 22,
+            "quantidade_placas2": 13,
+            "quantidade_placas3": 15,
+            "quantidade_placas4": 25
+
+        },
+        
+        "inversor":{ 
+        "id_inversor": null,
+        "marca_inversor": "CANADIAN",
+        "modelo_inversor": "PHB20K-SDT",
+        "potencia_inversor": 20000.0,
+        "numero_fases": "trifasico",
+        "tipo_inversor": "string",
+        "numero_mppt": 5
+    },
+
+        "placa": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa2": {
+        "id_placa": null,
+        "marca_placa": "JINK",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },    
+        "placa3": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    },
+        "placa4": {
+        "id_placa": null,
+        "marca_placa": "DAH",
+        "modelo_placa": "DHM-72X10-530",
+        "potencia_placa": 530,
+        "tipo_celula": "monocristralino",
+        "tensao_pico": 49.4,
+        "corrente_curtocircuito": 13.54,
+        "tensao_maxima_potencia": 41.6,
+        "corrente_maxima_potencia": 12.74,
+        "eficiencia_placa": null  
+    }     
+   
+    },
+
     "projetista": {
         "id_projetista": null,
         "nome_projetista": "DIEGO CANAFISTULA",
@@ -41,8 +343,7 @@
         "rubrica_projetista": "DT CANAFISTULA",
         "telefone_projetista": "12121212",
         "email_projetista": "projeto@email.com"
-                },
-    
+    },  
     "dados_procurador": {
         "id_procurador": null,
         "nome_procurador": "DIEGO CANAFISTULA",
@@ -57,94 +358,5 @@
         "bairro_procurador": "Jangurussu",
         "cidade_procurador": "Fortaleza",
         "estado_procurador": "ceara"
-    },
-    
-    
-    "projeto": {
-        "id_projeto": null, 
-        "numero_unidade_consumidora": "1235531",
-        "carga_instalada_kw": 12,
-        "disjuntor_geral_amperes": 32,
-        "energia_media_mensal_kwh": 1000,
-        "classe_consumo": "residencial",
-        "tipo_fornecimento": "monofasico",
-        "ramal_energia": "aereo",
-        "data_projeto": "2024-06-01",
-        "quantidade_placas": 12,
-        "quantidade_placas2": null,
-        "quantidade_placas3": null,
-        "quantidade_inversores": 1,
-        "quantidade_inversores2": null,
-        "quantidade_inversores3": null
-    },
-
-    "inversor": {
-        "id_inversor": null,
-        "marca_inversor": "PHB",
-        "modelo_inversor": "PHB20K-SDT",
-        "potencia_inversor": 20000.0,
-        "numero_fases": "trifasico",
-        "tipo_inversor": "string",
-        "numero_mppt": null
-    },
-
-    "inversor2": {
-        "id_inversor": null,
-        "marca_inversor": "PHB",
-        "modelo_inversor": "PHB20K-SDT",
-        "potencia_inversor": 20000.0,
-        "numero_fases": "trifasico",
-        "tipo_inversor": "string",
-        "numero_mppt": null
-    },
-    "inversor3": {
-        "id_inversor": null,
-        "marca_inversor": "PHB",
-        "modelo_inversor": "PHB20K-SDT",
-        "potencia_inversor": 20000.0,
-        "numero_fases": "trifasico",
-        "tipo_inversor": "string",
-        "numero_mppt": null
-    },
-   
-    "placa": {
-        "id_placa": null,
-        "marca_placa": "DAH",
-        "modelo_placa": "DHM-72X10-530",
-        "potencia_placa": 530,
-        "tipo_celula": "monocristralino",
-        "tensao_pico": 49.4,
-        "corrente_curtocircuito": 13.54,
-        "tensao_maxima_potencia": 41.6,
-        "corrente_maxima_potencia": 12.74,
-        "eficiencia_placa": null  
-    },
-
-    "placa2": {
-        "id_placa": null,
-        "marca_placa": "DAH",
-        "modelo_placa": "DHM-72X10-530",
-        "potencia_placa": 530,
-        "tipo_celula": "monocristralino",
-        "tensao_pico": 49.4,
-        "corrente_curtocircuito": 13.54,
-        "tensao_maxima_potencia": 41.6,
-        "corrente_maxima_potencia": 12.74,
-        "eficiencia_placa": null  
-    },
-
-    "placa3": {
-        "id_placa": null,
-        "marca_placa": "DAH",
-        "modelo_placa": "DHM-72X10-530",
-        "potencia_placa": 530,
-        "tipo_celula": "monocristralino",
-        "tensao_pico": 49.4,
-        "corrente_curtocircuito": 13.54,
-        "tensao_maxima_potencia": 41.6,
-        "corrente_maxima_potencia": 12.74,
-        "eficiencia_placa": null  
     }
-
-
 }

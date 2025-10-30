@@ -55,11 +55,17 @@ def gerar_memorial(inputs):
     #DOC
     story.append(Paragraph("1 - INTRODUÇÃO", styles['TituloSecao']))
     story.append(Spacer(1, 1*cm))
+
+    ##primeiro texto - introdução
     story.append(Paragraph(texto_introducao(), styles['CorpoTexto']))
     story.append(Spacer(1, 1*cm))
+    
+    ###IDENTIFICAÇÃO DO CLIENTE
     story.append(Paragraph("1.1 - Identificação do cliente", styles['SubSecao']))
     story.append(tabeladedados)
     story.append(Spacer(1, 2*cm))
+
+    ## segundo texto - localização
     story.append(Paragraph("2 - LOCALIZAÇÃO DO GERADOR FOTOVOLTAICO", styles['TituloSecao']))
     story.append(Spacer(1, 1*cm))
     story.append(Paragraph("2.1 -Planta de situação do gerador", styles['SubSecao']))
@@ -68,6 +74,8 @@ def gerar_memorial(inputs):
     story.append(Spacer(1, 0.5*cm))
     story.append(Paragraph(texto_loc2(), styles['CorpoTexto']))
     story.append(PageBreak())
+
+    ## terceiro texto - carga instalada
     story.append(Paragraph("3 - CARGA INSTALADA", styles['TituloSecao']))
     story.append(Spacer(1, 1*cm))
     story.append(Paragraph(texto_carginst(), styles['CorpoTexto']))
