@@ -1,11 +1,11 @@
 import fitz
-from src.utils.equacoes import (quantidade_inversor, quantidade_inversor2, quantidade_inversor3, paineis_diagrama,  inversor_diagrama,  potencia_total_unifilar, 
+from src.factorys.factorydatas.factorydocumentdata import (quantidade_inversor, quantidade_inversor2, quantidade_inversor3, paineis_diagrama,  inversor_diagrama,  potencia_total_unifilar, 
                             cabo_inversor1, inversor_tensao,  texto_disjuntor1_unifilar, texto2_disjuntor1_unifilar, disjuntor_geral, quantidade_total_painel, 
                             inversor_total_unifilar, tensao_local, texto2_disjuntorgeral_unifilar, texto_disjuntorgeral_unifilar)
 if quantidade_inversor2 not in [None,0]:
-    from src.utils.equacoes import (paineis_diagrama2, inversor2_diagrama,cabo_inversor2, inversor_tensao2,texto_disjuntor2_unifilar,texto2_disjuntor2_unifilar,)
+    from src.factorys.factorydatas.factorydocumentdata import (paineis_diagrama2, inversor2_diagrama,cabo_inversor2, inversor_tensao2,texto_disjuntor2_unifilar,texto2_disjuntor2_unifilar,)
 if quantidade_inversor3 not in [None,0]:
-    from src.utils.equacoes import (paineis_diagrama3,inversor3_diagrama,cabo_inversor3,inversor_tensao3,texto_disjuntor3_unifilar,texto2_disjuntor3_unifilar)
+    from src.factorys.factorydatas.factorydocumentdata import (paineis_diagrama3,inversor3_diagrama,cabo_inversor3,inversor_tensao3,texto_disjuntor3_unifilar,texto2_disjuntor3_unifilar)
 
 from src.utils.helpers import (cft_crea, projetista, projeto, data_de_hoje, municipio_obra, logradouro_obra, numero_obra, complemento_obra, bairro_obra,
                             nome_cliente)

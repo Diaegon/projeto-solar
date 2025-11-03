@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 
-from src.utils.models import tensao_fase, classe_consumo, ramal_energia, tipo_inversor
+from src.schemas.models import tensao_fase, classe_consumo, ramal_energia, tipo_inversor
 
 
 class Cliente(BaseModel):
@@ -221,7 +221,3 @@ class Projeto(BaseModel):
     procurador: Procurador
     sistema_instalado: list[ConfiguracaoSistema]
     #quantidades de placas e inversores, por enquanto definidas pelo json de entrada.
-
-
-    def definicao_arranjo_sistema():
-        ...

@@ -1,8 +1,10 @@
 import json
 from reportlab.platypus import Table, Paragraph, TableStyle
 from src.utils.helpers import data_de_hoje, nome_cliente, cpf_cliente
-from src.utils.estilos import styles, estilotabela, estilotabelaloc, estilo_tabela_parametros, estilo_assinatura
-from src.utils.equacoes import corrente_saida, tensao_queda, potenciaefetiva, energia_gerada,texto_corrente_saida, inversores_tensao, texto_cabos, vmp_modulos_tabela, potencia_modulos_tabela, imp_modulos_tabela, voc_modulos_tabela, isc_modulos_tabela, inversores_potencia, cabo_inversor1, inversor_tensao
+from src.schemas.tableschemas import styles, estilotabela, estilotabelaloc, estilo_tabela_parametros, estilo_assinatura
+from src.factorys.factorydatas.factorydocumentdata import (corrente_saida, tensao_queda, potenciaefetiva, energia_gerada,texto_corrente_saida, 
+                                                           inversores_tensao, texto_cabos, vmp_modulos_tabela, potencia_modulos_tabela,
+                                                             imp_modulos_tabela, voc_modulos_tabela, isc_modulos_tabela, inversores_potencia, cabo_inversor1, inversor_tensao)
 
 from src.config import INPUTS_DIR
 

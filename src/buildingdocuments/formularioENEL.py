@@ -1,5 +1,5 @@
 import fitz
-from src.utils.equacoes import (inversor_total_unifilar, carga_cliente, tensao_local, inversor_total_unifilar, potencia_total_unifilar)
+from src.factorys.factorydatas.factorydocumentdata import (inversor_total_unifilar, carga_cliente, tensao_local, inversor_total_unifilar, potencia_total_unifilar)
 from src.utils.helpers import (cft_crea, data_de_hoje, uc_cliente, ramal_cliente, logradouro_obra, fornecimento_cliente, numero_obra, complemento_obra, cep_obra, bairro_obra, email_cliente, telefone_cliente, cpf_cliente, latitude_obra, longitude_obra,
                             classe_codigo,classe_cliente,fornecimento_cliente, projetista, projeto, data_de_hoje, nome_procurador, email_procurador, telefone_procurador, municipio_obra, logradouro_obra, numero_obra, complemento_obra, bairro_obra,
                             nome_cliente)

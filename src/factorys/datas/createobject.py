@@ -1,5 +1,5 @@
 
-from src.utils.schemas import (Projeto, Cliente, EnderecoCliente, EnderecoObra,
+from src.schemas.schemas import (Projeto, Cliente, EnderecoCliente, EnderecoObra,
 Inversor, Placa, Projetista, Procurador, ConfiguracaoSistema)
 from pprint import pprint
 import json
@@ -114,24 +114,3 @@ def add_page_number(canvas, doc):
     canvas.setFont('Helvetica', 9)
     width, height = doc.pagesize
     canvas.drawCentredString(width / 2.0, 1.5 * cm, text)
-
-
-
-def quantidade_total_placas(self) -> int:
-    total = self.quantidade_placas
-    
-    if self.quantidade_placas2:
-        total += self.quantidade_placas2
-    if self.quantidade_placas3:
-        total += self.quantidade_placas3
-    return total
-
-def quantidade_total_inversores(self) -> int:
-    total = self.quantidade_inversores
-    if self.quantidade_inversores2:
-        total += self.quantidade_inversores2
-    if self.quantidade_inversores3:
-        total += self.quantidade_inversores3
-    return total
-
-

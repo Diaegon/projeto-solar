@@ -1,13 +1,13 @@
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak, Image
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
-from src.utils.estilos import styles
+from src.schemas.tableschemas import styles
 from src.utils.helpers import linha_sumario, add_page_number, data_de_hoje
-from src.utils.equacoes import (equacao, equacao2, equacao3, equacao4, insert_equation, render_equation_to_image)
-from src.textos.textos import (texto_introducao, texto_procuracao, texto_dimensionamento_protecao2, texto_dimensionamento_protecao3, texto_loc, texto_loc2, texto_carginst, texto_calculo_demanda, texto_calculo_demanda2,
+from src.factorys.factorydatas.factorydocumentdata import (equacao, equacao2, equacao3, equacao4, insert_equation, render_equation_to_image)
+from src.factorys.factorytexts.factorytexts import (texto_introducao, texto_procuracao, texto_dimensionamento_protecao2, texto_dimensionamento_protecao3, texto_loc, texto_loc2, texto_carginst, texto_calculo_demanda, texto_calculo_demanda2,
     texto_calculo_fc, texto_geradorfv, texto_potenciafv, texto_calculo_enegiagerada, texto_diagramas, texto_parametrizacao, texto_instalacao, texto_dimensionamento_protecao, texto_disjuntores, texto_sinalizacao, texto_diagramauni)
-from src.utils.imagens import img1, img2, img3
-from src.utils.tabelas import (tabeladedados, tabela_assinatura, tabela_localizacao, tabelapainel, tabela_parametros_tensao_inversor, tabela_parametros_frequencia_inversor, tabela_parametros_fp_inversor, tabela_queda_tensao)
+from src.factorys.factorycomponents.factoryimages import img1, img2, img3
+from src.factorys.factorycomponents.factorytables import (tabeladedados, tabela_assinatura, tabela_localizacao, tabelapainel, tabela_parametros_tensao_inversor, tabela_parametros_frequencia_inversor, tabela_parametros_fp_inversor, tabela_queda_tensao)
 
 def gerar_memorial(inputs):
     doc = SimpleDocTemplate(r"output\memorial_geracao_distribuida.pdf", pagesize=A4, leftMargin=2*cm, rightMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
@@ -127,10 +127,10 @@ def gerar_memorial(inputs):
     story.append(PageBreak())
     insert_equation(equacao3,story,'corrente.png')
     if inputs['dados_cliente']['quantidade_inversor2'] not in [None, 0]:
-        from utils.equacoes import equacao3_2
+        from src.factorys.factorydatas.factorydocumentdata import equacao3_2
         insert_equation(equacao3_2,story,'corrente2.png')
     if inputs['dados_cliente']['quantidade_inversor3'] not in [None, 0]:
-        from utils.equacoes import equacao3_3
+        from src.factorys.factorydatas.factorydocumentdata import equacao3_3
         insert_equation(equacao3_3,story,'corrente3.png')    
     #AJEITAR ESSA LÓGICA PARA NÃO PRECISAR DO IF NO MEIO DO GERADOR DE TEXTO.    
     story.append(Spacer(1, 1*cm))
@@ -155,12 +155,3 @@ def gerar_memorial(inputs):
 
     doc.build(story, onFirstPage=add_page_number, onLaterPages=add_page_number)
 
-def gerar_procuracao(inputs):
-    proc = SimpleDocTemplate(r"C:\Users\DIEGO\Desktop\code\projetosolar\output\procuracao.pdf", pagesize=A4, leftMargin=2*cm, rightMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm)
-    procuracao = []
-    procuracao.append(Paragraph("PROCURAÇÃO PARTICULAR", styles['Title']))
-    procuracao.append(Spacer(1, 4*cm))
-    procuracao.append(Paragraph(texto_procuracao(), styles['CorpoTexto']))
-    procuracao.append(Spacer(1, 12*cm))
-    procuracao.append(tabela_assinatura)
-    proc.build(procuracao)

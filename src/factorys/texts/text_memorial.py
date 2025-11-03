@@ -1,13 +1,3 @@
-from datetime import datetime 
-from dateutil.relativedelta import relativedelta
-from src.utils.helpers import projeto 
-
-from src.config import INPUTS_DIR
-
-data_de_hoje = datetime.now()
-data_futura = data_de_hoje+relativedelta(months=1)
-#MEMORIAL DESCRITIVO
-
 def texto_introducao():
 
 
@@ -119,12 +109,65 @@ def texto_sinalizacao():
 PVC 2,0 mm com tratamento anti-UV, conforme Figura a seguir, fixada de acordo \
 com o desenho D010.01 dá NT Br-010 R-01, sem que haja a perfuração da caixa para \
 fixação da sinalização. "
-#PROCURACAO
 
-def texto_procuracao():
-    return f"Por esse instrumento particular de procuração, eu, {nome_cliente}, brasileiro, portador do CPF {cpf_cliente}, \
-    residente e domiciliado na {logradouro_cliente}, {numero_cliente} {complemento_cliente}, {municipio_cliente}, {estado_cliente},\
-    CEP: {cep_cliente}, nomeio e constituo meu bastante procurador o Sr. {nome_procurador}, brasileiro, portador do \
-    CPF {cpf_procurador}, residente e domiciliado na {logradouro_procurador}, {numero_casa_procurador} {complemento_procurador},\
-    {municipio_procurador}, {estado_procurador}, CEP: {cep_procurador}, {telefone_procurador}, a quem confiro amplos poderes para me representar junto a ENEL, com o fim de solicitar a \
-    ligação do sistema fotovoltaico, e para assinar todos os documentos necessários para solicitação de acesso e vistoria, durante os próximos <b>3 MESES</b>." 
+
+#texto inversores memorial
+inversor = f"{quantidade_inversor} " + "inversor" + f" {inversor_marca} {inversor_modelo}"
+
+
+texto_disjuntores_protecao = [f"{quantidade_inversor} disjuntor de {disjuntor_protecao1} A"]
+texto_cabos = [f"{cabo_inversor1}"]
+corrente_max_cabos = [f"{corrente_max_cabo1}"]
+texto_corrente_saida = [f"{corrente_saida:.2f} A"]
+inversores_tensao = [f"{inversor_tensao}"]
+
+
+
+texto_tensao_queda = [f"{tensao_queda:.2f} %"]  
+
+## texto tabelas 
+
+
+#tratamento tabela dos paineis
+pot1 = inputs['painel']['potencia']
+potencia_modulos_tabela = [f'{pot1}']
+vmp1 = inputs['painel']['vp']
+vmp_modulos_tabela = [f'{vmp1}']
+imp1 = inputs['painel']['imp']
+imp_modulos_tabela = [f'{imp1}']
+voc1 = inputs['painel']['voc']
+voc_modulos_tabela = [f'{voc1}']
+isc1 = inputs['painel']['isc']
+isc_modulos_tabela = [f'{isc1}']
+if inputs['dados_cliente']['quantidade_painel2'] not in [None,0]:
+    pot2 = inputs['painel2']['potencia']
+    potencia_modulos_tabela.append(f'{pot2}')
+    vmp2 = inputs['painel2']['vp']
+    vmp_modulos_tabela.append(f'{vmp2}')
+    imp2 = inputs['painel2']['imp']
+    imp_modulos_tabela.append(f'{imp2}')
+    voc2 = inputs['painel2']['voc']
+    voc_modulos_tabela.append(f'{voc2}')
+    isc2 = inputs['painel2']['isc']
+    isc_modulos_tabela.append(f'{isc2}')
+if inputs['dados_cliente']['quantidade_painel3'] not in [None,0]:
+    pot3 = inputs['painel3']['potencia']
+    potencia_modulos_tabela.append(f'{pot3}')
+    vmp3 = inputs['painel3']['vp']
+    vmp_modulos_tabela.append(f'{vmp3}')
+    imp3 = inputs['painel3']['imp']
+    imp_modulos_tabela.append(f'{imp3}')
+    voc3 = inputs['painel3']['voc']
+    voc_modulos_tabela.append(f'{voc3}')
+    isc3 = inputs['painel3']['isc']
+    isc_modulos_tabela.append(f'{isc3}')
+potencia_modulos_tabela = ', '.join(potencia_modulos_tabela)
+
+vmp_modulos_tabela = ', '.join(vmp_modulos_tabela)
+imp_modulos_tabela = ', '.join(imp_modulos_tabela)
+voc_modulos_tabela = ', '.join(voc_modulos_tabela)
+isc_modulos_tabela = ', '.join(isc_modulos_tabela)
+inversores_potencia = ', '.join(inversores_potencia)
+texto_cabos = ", ".join(texto_cabos)
+corrente_max_cabos = ", ".join(corrente_max_cabos)
+texto_corrente_saida = ", ".join(texto_corrente_saida)
