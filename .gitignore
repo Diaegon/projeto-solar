@@ -270,4 +270,6 @@ pyrightconfig.json
 # Dados locais (não versionar)
 dados/
 
+.idea/
+
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,database,images
