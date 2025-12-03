@@ -44,106 +44,7 @@ class Inversor(BaseModel):
     tipo_inversor: tipo_inversor
     numero_mppt: int | None #reservado para atualizações futuras
 
-    @property
-    def multiplicador(self) -> float:
-        """Retorna o multiplicador baseado no número de fases."""
-        if self.numero_fases == 'monofasico':
-            return 1.0
-        elif self.numero_fases == 'trifasico':
-            return 1.732
-        else:
-            raise ValueError("Número de fases inválido")
     
-    @property
-    def inversor_tensao(self) -> int:
-        """Retorna a tensão baseada no número de fases."""
-        if self.numero_fases == 'monofasico':
-            return 220
-        elif self.numero_fases == 'trifasico':
-            return 380
-        else:
-            raise ValueError("Número de fases inválido")
-
-    @property
-    def corrente_saida(self) -> float:
-        """Calcula a corrente de saída do inversor."""
-        return self.potencia_inversor / (self.multiplicador * self.inversor_tensao)        
-
-    @property
-    def disjuntor_protecao(self) -> int:
-        """Calcula o disjuntor de proteção do inversor."""
-        corrente = self.corrente_saida
-        if corrente <= 10:
-            return 10
-        elif corrente <= 16:
-            return 16
-        elif corrente <= 20:
-            return 20
-        elif corrente <= 25:
-            return 25
-        elif corrente <= 32:
-            return 32
-        elif corrente <= 40:
-            return 40
-        elif corrente <= 50:
-            return 50
-        elif corrente <= 63:
-            return 63
-        elif corrente <= 80:
-            return 80
-        else:
-            raise ValueError("Corrente de saída muito alta para disjuntor padrão")
-
-    @property
-    def cabo_energia_inversor(self) -> str:
-        """Determina o cabo de energia baseado na corrente de saída."""
-        corrente = self.corrente_saida
-        if corrente <= 27:
-            return "4 mm²"
-        elif corrente <= 35:
-            return "6 mm²"
-        elif corrente <= 49:
-            return "10 mm²"
-        elif corrente <= 67:
-            return "16 mm²"
-        elif corrente <= 88:
-            return "25 mm²"
-        elif corrente <= 110:
-            return "35 mm²"
-        else:
-            raise ValueError("Corrente de saída muito alta para cabo padrão")
-
-    @property
-    def corrente_max_cabo(self) -> str:
-        """Determina a corrente máxima do cabo baseado na corrente de saída."""
-        corrente = self.corrente_saida
-        if corrente <= 28:
-            return "28 A"
-        elif corrente <= 36:
-            return "36 A"
-        elif corrente <= 50:
-            return "50 A"
-        elif corrente <= 68:
-            return "68 A"
-        elif corrente <= 89:
-            return "89 A"
-        elif corrente <= 111:
-            return "111 A"
-        else:
-            raise ValueError("Corrente de saída muito alta para cabo padrão")
-
-    @property
-    def quantidade_string(self) -> int:
-        if self.potencia_inversor <= 7000:
-            return 2
-        elif self.potencia_inversor <= 10000:
-            return 3
-        elif self.potencia_inversor <= 15000:
-            return 4
-        elif self.potencia_inversor <= 20000:
-            return 6
-        elif self.potencia_inversor <= 40000:
-            return 8
 
 class Placa(BaseModel):
     id_placa: int | None
@@ -192,16 +93,6 @@ class ConfiguracaoSistema(BaseModel):
     placa4: Placa | None = None
    
     
-    @property
-    def texto_final_inversor(self):
-        textos = []
-        textos.append(f"{self.quantidade_inversores} inversor(es) {self.inversor.marca_inversor} {self.inversor.modelo_inversor}")
-        if self.quantidade_inversores2 and self.quantidade_inversores2 > 0:
-            textos.append(f"{self.quantidade_inversores2} inversor(es) {self.inversor2.marca_inversor} {self.inversor2.modelo_inversor}")
-        if self.quantidade_inversores3 and self.quantidade_inversores3 > 0:
-            textos.append(f"{self.quantidade_inversores3} inversor(es) {self.inversor3.marca_inversor} {self.inversor3.modelo_inversor}")
-        return ' e '.join(textos)
-
 class Projeto(BaseModel):
     id_projeto: int | None
     

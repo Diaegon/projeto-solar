@@ -22,6 +22,7 @@ def render_equation_to_image(equation, filename):
     plt.close()
 
 def insert_equation(equation, story, img_filename):
+    equation = ""
     render_equation_to_image(equation, img_filename)
     img = Image(img_filename)
     img.drawHeight = 50

@@ -1,7 +1,7 @@
 {
     "cliente": {
         "id_cliente": null,
-        "nome_cliente": "Dotô PAblo",
+        "nome_cliente": "Dotô PAblo DELAS",
         "cpf": "121212",
         "data_nascimento": "15/07/1999",
         "razao_social": null,
@@ -13,7 +13,7 @@
     },
 
     "endereco_cliente": {
-        "logradouro_cliente": "WQWQW",
+        "logradouro_cliente": "É O LAION NÃO TEM JEITO",
         "numero_casa_cliente": "12Q",
         "complemento_casa_cliente": "QQW",
         "cep_cliente": "QW",
@@ -23,7 +23,7 @@
     },
 
     "endereco_obra": {
-        "logradouro_obra": "QWQWQW",
+        "logradouro_obra": "É O LAION NÃO TEM JEITO",
         "numero_obra": "12",
         "complemento_obra": "QW",
         "cep_obra": "QW",
@@ -104,7 +104,7 @@
             "id_inversor": null,
             "marca_inversor": "PHB",
             "modelo_inversor": "PHB20K-SDT",
-            "potencia_inversor": 20000.0,
+            "potencia_inversor": 40000.0,
             "numero_fases": "trifasico",
             "tipo_inversor": "string",
             "numero_mppt": 6
