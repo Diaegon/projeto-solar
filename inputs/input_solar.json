@@ -1,44 +1,44 @@
 {
     "cliente": {
         "id_cliente": null,
-        "nome_cliente": "Dotô PAblo DELAS",
-        "cpf": "121212",
-        "data_nascimento": "15/07/1999",
+        "nome_cliente": "[NOME COMPLETO CLIENTE]",
+        "cpf": "[CPF CLIENTE]",
+        "data_nascimento": "[DATA NASCIMENTO]",
         "razao_social": null,
         "nome_fantasia": null,
-        "cnpj": "123456789",
-        "rg": "1234567",
-        "telefone_cliente": "122312412",
-        "email_cliente": "joao@email.com"
+        "cnpj": null,
+        "rg": null,
+        "telefone_cliente": "[TELEFONE CLIENTE]",
+        "email_cliente": "[EMAIL CLIENTE]"
     },
 
     "endereco_cliente": {
-        "logradouro_cliente": "É O LAION NÃO TEM JEITO",
-        "numero_casa_cliente": "12Q",
-        "complemento_casa_cliente": "QQW",
-        "cep_cliente": "QW",
-        "bairro_cliente": "QW",
-        "cidade_cliente": "QW",
-        "estado_cliente": "QW"
+        "logradouro_cliente": "[LOGRADOURO CLIENTE]",
+        "numero_casa_cliente": "[NUMERO CASA CLIENTE]",
+        "complemento_casa_cliente": "[COMPLEMENTO CASA CLIENTE]",
+        "cep_cliente": "[CEP CLIENTE]",
+        "bairro_cliente": "[BAIRRO DO CLIENTE]",
+        "cidade_cliente": "[CIDADE DO CLIENTE]",
+        "estado_cliente": "[ESTADO DO CLIENTE]"
     },
 
     "endereco_obra": {
-        "logradouro_obra": "É O LAION NÃO TEM JEITO",
-        "numero_obra": "12",
-        "complemento_obra": "QW",
-        "cep_obra": "QW",
-        "bairro_obra": "QQWQ",
-        "cidade_obra": "FORTALEZA",
-        "estado_obra": "CEARA",
-        "latitude_obra": -3.12133,
-        "longitude_obra": -33.12345
+        "logradouro_obra": "[LOGRADOURO DA OBRA]",
+        "numero_obra": "[NUMERO DA OBRA]",
+        "complemento_obra": "[COMPLEMENTO DA OBRA]",
+        "cep_obra": "[CEP DA OBRA]",
+        "bairro_obra": "[BAIRRO DA OBRA]",
+        "cidade_obra": "CIDADE DA OBRA",
+        "estado_obra": "[ESTADO DA OBRA]",
+        "latitude_obra": null,
+        "longitude_obra": null
     },
 
     
     "projeto": {
         "id_projeto": null, 
-        "numero_unidade_consumidora": "1235531",
-        "carga_instalada_kw": 12,
+        "numero_unidade_consumidora": "[N° UNIDADE CONSUMIDORA]",
+        "carga_instalada_kw": null,
         "disjuntor_geral_amperes": 32,
         "energia_media_mensal_kwh": 1000,
         "classe_consumo": "residencial",
@@ -103,7 +103,7 @@
             "inversor":{ 
             "id_inversor": null,
             "marca_inversor": "PHB",
-            "modelo_inversor": "PHB20K-SDT",
+            "modelo_inversor": "PHB40K-SDT",
             "potencia_inversor": 40000.0,
             "numero_fases": "trifasico",
             "tipo_inversor": "string",

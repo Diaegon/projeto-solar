@@ -12,7 +12,6 @@ class ObjetosCalculados(Calculos):
     def __init__(self, projeto):
         #check
         self.projeto = projeto
-
         self.numero_total_strings = 0
         self.quantidade_sistemas = 0
         self.multiplicador = []
@@ -35,7 +34,8 @@ class ObjetosCalculados(Calculos):
         self.potencia_total_inversores_final = 0
         self.tensao_queda = []
         self.corrente_saida_por_inversor =[]
-
+        self.gerador_texto_introducao2 = ""
+        self.lista_equacoes_protecao_inversores = []
         self.checagem_sistemas_instalados()
         self.checagem_inversores()
         self.checagem_placas()
@@ -44,12 +44,12 @@ class ObjetosCalculados(Calculos):
 
 
     def checagem_sistemas_instalados(self):
-        sistemas_instalados = projeto.sistema_instalado
+        sistemas_instalados = self.projeto.sistema_instalado
         self.quantidade_sistemas = len(sistemas_instalados)
     
     def get_multiplicador(self, sistema, numero_fases) -> float:
         """Retorna o multiplicador baseado no número de fases."""
-        numero_fases = projeto.sistema_instalado[sistema].inversor.numero_fases
+        numero_fases = self.projeto.sistema_instalado[sistema].inversor.numero_fases
         if numero_fases == 'monofasico':
             self.multiplicador.append(1)
             self.inversor_tensao.append(220)
@@ -60,7 +60,7 @@ class ObjetosCalculados(Calculos):
             raise ValueError("Número de fases do inversor inválido")
 
     def get_classe_codigo(self):
-        classe_cliente = projeto.classe_consumo
+        classe_cliente = self.projeto.classe_consumo
         if classe_cliente == "residencial":
             classe_codigo = "B1"
         elif classe_cliente == "rural":
@@ -71,7 +71,7 @@ class ObjetosCalculados(Calculos):
         return classe_codigo
 
     def get_tensao_local(self):
-        tensao_cliente = projeto.tipo_fornecimento
+        tensao_cliente = self.projeto.tipo_fornecimento
         if tensao_cliente == "monofasico":
             tensao_local = 220
         elif tensao_cliente == "bifasico":
@@ -86,14 +86,14 @@ class ObjetosCalculados(Calculos):
         modelo_inversores = []
 
         for sistema in range(self.quantidade_sistemas):
-            quantidade_inversor = projeto.sistema_instalado[sistema].quantidade_inversor
-            marca_de_inversores.append(projeto.sistema_instalado[sistema].inversor.marca_inversor)
-            modelo_inversores = projeto.sistema_instalado[sistema].inversor.modelo_inversor
-            potencia_inversor = projeto.sistema_instalado[sistema].inversor.potencia_inversor
-            numero_fases = projeto.sistema_instalado[sistema].inversor.numero_fases
+            quantidade_inversor = self.projeto.sistema_instalado[sistema].quantidade_inversor
+            marca_de_inversores.append(self.projeto.sistema_instalado[sistema].inversor.marca_inversor)
+            modelo_inversores = self.projeto.sistema_instalado[sistema].inversor.modelo_inversor
+            potencia_inversor = self.projeto.sistema_instalado[sistema].inversor.potencia_inversor
+            numero_fases = self.projeto.sistema_instalado[sistema].inversor.numero_fases
             
             self.get_multiplicador(sistema, numero_fases)
-            corrente_saida_inversor = self.get_corrente_saida(potencia_inversor, self.multiplicador[sistema], self.inversor_tensao[sistema])
+            corrente_saida_inversor = round(self.get_corrente_saida(potencia_inversor, self.multiplicador[sistema], self.inversor_tensao[sistema]),2)
             self.corrente_saida_por_inversor.append(corrente_saida_inversor)
             cabo = self.cabo_energia_inversor(corrente_saida_inversor)
             cabo_inteiro = int(cabo.split()[0])
@@ -110,8 +110,8 @@ class ObjetosCalculados(Calculos):
             self.texto_protecao_inversor += f" {quantidade_inversor} disjuntor de {disjuntor_protecao} A,"
             self.texto_corrente_max_cabo += self.corrente_max_cabo(corrente_saida_inversor) + ","
             self.texto_inversor_memorial += f" {quantidade_inversor} inversor {marca_de_inversores[-1]} {modelo_inversores}," 
-        
-        
+            self.gerador_texto_introducao2 += f"{modelo_inversores} "
+            
         for marca in marca_de_inversores:
             if marca_de_inversores.count(marca) > 1:
                 marca_de_inversores.remove(marca)
@@ -121,14 +121,14 @@ class ObjetosCalculados(Calculos):
         
         def monta_texto_placa(item):
 
-            quantidade_placas = list(projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.values())
-            marca_placas = str(projeto.sistema_instalado[item].placa.marca_placa)
-            modelo_placas = str(projeto.sistema_instalado[item].placa.modelo_placa)
-            potencia_placa = str(projeto.sistema_instalado[item].placa.potencia_placa)
-            tensao_individual = str(projeto.sistema_instalado[item].placa.tensao_maxima_potencia)
-            tensao_circuito_aberto = str(projeto.sistema_instalado[item].placa.tensao_pico)
-            corrente_maxima_potencia = str(projeto.sistema_instalado[item].placa.corrente_maxima_potencia)
-            corrente_cc = str(projeto.sistema_instalado[item].placa.corrente_curtocircuito)
+            quantidade_placas = list(self.projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.values())
+            marca_placas = str(self.projeto.sistema_instalado[item].placa.marca_placa)
+            modelo_placas = str(self.projeto.sistema_instalado[item].placa.modelo_placa)
+            potencia_placa = str(self.projeto.sistema_instalado[item].placa.potencia_placa)
+            tensao_individual = str(self.projeto.sistema_instalado[item].placa.tensao_maxima_potencia)
+            tensao_circuito_aberto = str(self.projeto.sistema_instalado[item].placa.tensao_pico)
+            corrente_maxima_potencia = str(self.projeto.sistema_instalado[item].placa.corrente_maxima_potencia)
+            corrente_cc = str(self.projeto.sistema_instalado[item].placa.corrente_curtocircuito)
             self.texto_tensao_individual_paineis += f" {tensao_individual},"
             self.texto_potencia_placa += f" {potencia_placa},"
             self.texto_tensao_circuito_aberto +=  f" {tensao_circuito_aberto},"
@@ -140,14 +140,14 @@ class ObjetosCalculados(Calculos):
         
         def monta_texto_placa2(item):
 
-            quantidade_placas2 = list(projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.values())
-            marca_placas2 = str(projeto.sistema_instalado[item].placa2.marca_placa)
-            modelo_placas2 = str(projeto.sistema_instalado[item].placa2.modelo_placa)
-            potencia_placa2 = str(projeto.sistema_instalado[item].placa2.potencia_placa)
-            tensao_individual2 = str(projeto.sistema_instalado[item].placa2.tensao_maxima_potencia)
-            tensao_circuito_aberto2 = str(projeto.sistema_instalado[item].placa2.tensao_pico)
-            corrente_maxima_potencia2 = str(projeto.sistema_instalado[item].placa2.corrente_maxima_potencia)
-            corrente_cc2 = str(projeto.sistema_instalado[item].placa2.corrente_curtocircuito)
+            quantidade_placas2 = list(self.projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.values())
+            marca_placas2 = str(self.projeto.sistema_instalado[item].placa2.marca_placa)
+            modelo_placas2 = str(self.projeto.sistema_instalado[item].placa2.modelo_placa)
+            potencia_placa2 = str(self.projeto.sistema_instalado[item].placa2.potencia_placa)
+            tensao_individual2 = str(self.projeto.sistema_instalado[item].placa2.tensao_maxima_potencia)
+            tensao_circuito_aberto2 = str(self.projeto.sistema_instalado[item].placa2.tensao_pico)
+            corrente_maxima_potencia2 = str(self.projeto.sistema_instalado[item].placa2.corrente_maxima_potencia)
+            corrente_cc2 = str(self.projeto.sistema_instalado[item].placa2.corrente_curtocircuito)
             self.texto_tensao_individual_paineis += f" {tensao_individual2},"
             self.texto_potencia_placa += f" {potencia_placa2},"
             self.texto_tensao_circuito_aberto +=  f" {tensao_circuito_aberto2},"
@@ -158,7 +158,7 @@ class ObjetosCalculados(Calculos):
             return texto_por_placa2
         
         for item in range(self.quantidade_sistemas):
-            sistemas_instalados = projeto.sistema_instalado[item]
+            sistemas_instalados = self.projeto.sistema_instalado[item]
             quantidade_placas_lista = list(sistemas_instalados.quantidade_total_placas_do_sistema.values())
             texto_da_placa = monta_texto_placa(item)
             self.texto_placas_memorial += texto_da_placa
@@ -193,7 +193,7 @@ class ObjetosCalculados(Calculos):
         
         
         return quantidade_final
-    #calcula a distribuição das placas no inversor, como nesse projeto cada sistema só tem um inversor, fica mais simples o calculo
+    #calcula a distribuição das placas no inversor, como nesse self.projeto cada sistema só tem um inversor, fica mais simples o calculo
     #vamos deixar a resposta crua sem identificar quais placas vão ser arranjadas;
     def distribui_placa_por_inversor(self,quantidade_sistemas):
         numero_strings = self.projeto.sistema_instalado[quantidade_sistemas].inversor.numero_mppt
@@ -236,39 +236,77 @@ class ObjetosCalculados(Calculos):
         data_futura = data_futura.strftime("%d de %B de %Y")
         return data_futura
     
+    def equacao_demanda(self):
+        resultado = self.projeto.energia_media_mensal_kwh / 720
+        equacao = fr"$D_{{\mathrm{{media}}}} = \frac{{\mathrm{{Energia\ media}}}}{{N^{{\circ}}\,\mathrm{{de\ horas}}}} = \frac{{{self.projeto.energia_media_mensal_kwh}}}{{720}} = {resultado:.2f}\ kW$"
+        return equacao
+    
+    
+    def calculo_fator_de_carga(self):
+        fatordecarga = (self.projeto.energia_media_mensal_kwh / 720) / self.projeto.carga_instalada_kw
+        equacao2 = fr"$FC = \frac{{\mathrm{{Energia}}}}{{\mathrm{{Potencia \ instalada \ x \ 720h}}}} = \frac{{{self.projeto.energia_media_mensal_kwh}}}{{{self.projeto.carga_instalada_kw} \ x  \ 720}} = {fatordecarga:.2f}\ kW$"
+        return equacao2    
+    
+    def conta_equacoes_inversor(self):
+        equacao = []
+        for sistema in range(self.quantidade_sistemas):
+            equacao.append(self.equacao_protecao_inversor(sistema))
+        
+        return equacao
+
+    def equacao_protecao_inversor(self,i):
+        # equacao = fr"$I_{{\mathrm{{AG}}}} = \frac{{\mathrm{{potencia\ nominal }}}}{{\mathrm{{Tensao\ nominal * {self.multiplicador[i]}}}}} =\frac{{{self.potencia_inversores[i]}}}{{{self.inversor_tensao[i]* self.multiplicador[i]}}} = {self.corrente_saida_por_inversor[i]:.2f}\ A$" 
+        equacao = (
+            fr"$I_{{\mathrm{{AG}}}} = "
+            fr"\frac{{\mathrm{{potencia\ nominal }}}}"
+            fr"{{\mathrm{{Tensao\ nominal * {self.multiplicador[i]}}}}} = "
+            fr"\frac{{{self.potencia_inversores[i]}}}"
+            fr"{{{self.inversor_tensao[i] * self.multiplicador[i]}}} = "
+            fr"{self.corrente_saida_por_inversor[i]:.2f}\ A$"
+        )
+
+        
+        
+        return equacao
+    
+
+    def equacao_queda_tensao(self):
+        equacao4 = fr"$\Delta V \% = \frac{{200*\rho*L_c*I_c*cos\varphi}}{{S_c*V_f}}$"
+        return equacao4
+
 
     def construtor_dados_memorial(self) -> RetornoObjetosCalculados:
         retorno = RetornoObjetosCalculados()
         #memorial descritivo
-        retorno.logradouro_obra = projeto.endereco_obra.logradouro_obra
-        retorno.numero_obra = projeto.endereco_obra.numero_obra
-        retorno.complemento_obra = projeto.endereco_obra.complemento_obra
-        retorno.bairro_obra = projeto.endereco_obra.bairro_obra
-        retorno.cidade_obra = projeto.endereco_obra.cidade_obra
-        retorno.estado_obra = projeto.endereco_obra.estado_obra
+        retorno.logradouro_obra = self.projeto.endereco_obra.logradouro_obra
+        retorno.numero_obra = self.projeto.endereco_obra.numero_obra
+        retorno.complemento_obra = self.projeto.endereco_obra.complemento_obra
+        retorno.bairro_obra = self.projeto.endereco_obra.bairro_obra
+        retorno.cidade_obra = self.projeto.endereco_obra.cidade_obra
+        retorno.estado_obra = self.projeto.endereco_obra.estado_obra
         retorno.data_futura = ObjetosCalculados.data_futura(self.data_de_hoje())
-        retorno.cep_obra = projeto.endereco_obra.cep_obra
-        retorno.latitude_obra = projeto.endereco_obra.latitude_obra
-        retorno.longitude_obra = projeto.endereco_obra.longitude_obra
+        retorno.cep_obra = self.projeto.endereco_obra.cep_obra
+        retorno.latitude_obra = self.projeto.endereco_obra.latitude_obra
+        retorno.longitude_obra = self.projeto.endereco_obra.longitude_obra
 
-        retorno.nome_cliente = projeto.cliente.nome_cliente
-        retorno.cpf = projeto.cliente.cpf 
-        retorno.rg = projeto.cliente.rg
-        retorno.razao_social = projeto.cliente.razao_social
-        retorno.nome_fantasia = projeto.cliente.nome_fantasia
-        retorno.cnpj = projeto.cliente.cnpj
-        retorno.telefone = projeto.cliente.telefone_cliente
-        retorno.email = projeto.cliente.email_cliente
-        retorno.data_nascimento = projeto.cliente.data_nascimento
+        retorno.nome_cliente = self.projeto.cliente.nome_cliente
+        retorno.cpf = self.projeto.cliente.cpf 
+        retorno.rg = self.projeto.cliente.rg
+        retorno.razao_social = self.projeto.cliente.razao_social
+        retorno.nome_fantasia = self.projeto.cliente.nome_fantasia
+        retorno.cnpj = self.projeto.cliente.cnpj
+        retorno.telefone = self.projeto.cliente.telefone_cliente
+        retorno.email = self.projeto.cliente.email_cliente
+        retorno.data_nascimento = self.projeto.cliente.data_nascimento
         retorno.data_hoje = ObjetosCalculados.data_de_hoje(self).strftime("%d de %B de %Y")
 
         #dados elétricos do estabelecimento
-        retorno.classe_consumo = projeto.classe_consumo
-        retorno.carga_instalada_kw = projeto.carga_instalada_kw
-        retorno.energia_media_mensal_kwh = projeto.energia_media_mensal_kwh
+        retorno.classe_consumo = self.projeto.classe_consumo
+        retorno.carga_instalada_kw = self.projeto.carga_instalada_kw
+        retorno.energia_media_mensal_kwh = round(self.projeto.energia_media_mensal_kwh, 2)
         retorno.tensao_local = self.get_tensao_local()
-        retorno.tipo_fornecimento = projeto.tipo_fornecimento
-        retorno.disjuntor_geral = projeto.disjuntor_geral_amperes
+        retorno.tipo_fornecimento = self.projeto.tipo_fornecimento
+        retorno.disjuntor_geral = self.projeto.disjuntor_geral_amperes
         
         #textos do memorial descritivo
         retorno.texto_placas_memorial = self.texto_placas_memorial 
@@ -280,12 +318,13 @@ class ObjetosCalculados(Calculos):
         retorno.texto_cabos = self.texto_cabos
         retorno.texto_2_protecao_inversor = self.texto_2_protecao_inversor
         retorno.gerador_texto_introducao = self.gerador_texto_introducao
+        retorno.gerador_texto_introducao2 = self.gerador_texto_introducao2
         retorno.corrente_mp = self.corrente_maxima_potencia
         retorno.corrente_cc = self.corrente_cc
         retorno.tensao_circuito_aberto = self.texto_tensao_circuito_aberto
 
         #dados painel
-        retorno.tipo_celula = projeto.sistema_instalado[0].placa.tipo_celula
+        retorno.tipo_celula = self.projeto.sistema_instalado[0].placa.tipo_celula
         retorno.quantidade_final_placas = self.quantidade_final_placas
         retorno.potencia_total_paineis_final = self.potencia_total_paineis_final
         
@@ -293,57 +332,27 @@ class ObjetosCalculados(Calculos):
         retorno.numero_total_strings = self.numero_total_strings
         retorno.quantidade_final_de_placas_por_inversor = self.quantidade_final_de_placas_por_inversor
         retorno.potencia_inversores = self.potencia_inversores
-        retorno.potencia_efetiva = self.calculo_potencia_efetiva(self.potencia_total_paineis_final)
+        retorno.potencia_efetiva = round(self.calculo_potencia_efetiva(self.potencia_total_paineis_final), 2)
         retorno.corrente_saida_por_inversor = self.corrente_saida_por_inversor
         retorno.inversor_tensao = self.inversor_tensao
         #calculos adicionais
-        retorno.energia_gerada_mensal = self.energia_gerada(retorno.potencia_efetiva)
+        retorno.energia_gerada_mensal = round(self.energia_gerada(retorno.potencia_efetiva), 2)
         retorno.queda_tensao = self.tensao_queda
-        retorno.numero_uc = projeto.numero_unidade_consumidora
+        retorno.numero_uc = self.projeto.numero_unidade_consumidora
         
-        #projeto
-        retorno.projetista = projeto.projetista.nome_projetista
-        retorno.cft_crea = projeto.projetista.creci_projetista
-        
+        #self.projeto
+        retorno.projetista = self.projeto.projetista.nome_projetista
+        retorno.cft_crea = self.projeto.projetista.creci_projetista
+
+
+        #equacoes
+        retorno.equacao = self.equacao_demanda()
+        retorno.equacao2 = self.calculo_fator_de_carga()
+        retorno.equacao3 = self.conta_equacoes_inversor()
+        retorno.equacao4 = self.equacao_queda_tensao()
+
         return retorno 
     
-
-    @property
-    def equacao_demanda(self):
-        resultado = self.projeto.energia_media_mensal_kwh / 720
-        equacao = fr"$D_{{\mathrm{{media}}}} = \frac{{\mathrm{{Energia\ media}}}}{{N^{{\circ}}\,\mathrm{{de\ horas}}}} = \frac{{{projeto.energia_media_mensal_kwh}}}{{720}} = {resultado:.2f}\ kW$"
-        return equacao
-    
-    @property
-    def calculo_fator_de_carga(self):
-        fatordecarga = (projeto.energia_media_mensal_kwh / 720) / projeto.carga_instalada_kw
-        equacao2 = fr"$FC = \frac{{\mathrm{{Energia}}}}{{\mathrm{{Potencia \ instalada \ x \ 720h}}}} = \frac{{{projeto.energia_media_mensal_kwh}}}{{{projeto.carga_instalada_kw} \ x  \ 720}} = {fatordecarga:.2f}\ kW$"
-        return equacao2    
-
-    @property
-    def equacao_protecao_inversor(self):
-        # equacao3 = fr"$I_{{\mathrm{{AG}}}} = 
-        # \frac{{\mathrm{{potencia\ nominal }}}}{{\mathrm{{Tensao\ nominal * {projeto.sistema_instalado.inversor.multiplicador}}}}} = 
-        # \frac{{{projeto.sistema_instalado.inversor.potencia_inversor}}}{{{projeto.sistema_instalado.inversor.inversor_tensao * projeto.sistema_instalado.inversor.multiplicador}}} 
-        # = {projeto.sistema_instalado.inversor.corrente_saida:.2f}\ A$" 
-        equacao = (
-            fr"$I_{{\mathrm{{AG}}}} = "
-            fr"\frac{{\mathrm{{potência\ nominal}}}}"
-            fr"{{\mathrm{{Tensão\ nominal * {projeto.sistema_instalado.inversor.multiplicador}}}}}"
-            fr" \\[6pt] = "
-            fr"\frac{{{projeto.sistema_instalado.inversor.potencia_inversor}}}"
-            fr"{{{projeto.sistema_instalado.inversor.inversor_tensao * projeto.sistema_instalado.inversor.multiplicador}}}"
-            fr" \\[6pt] = {projeto.sistema_instalado.inversor.corrente_saida:.2f}\ A$"
-        )
-        return equacao
-    
-    @property
-    def equacao_queda_tensao(self):
-        equacao4 = fr"$\Delta V \% = \frac{{200*\rho*L_c*I_c*cos\varphi}}{{S_c*V_f}}$"
-        return equacao4
-
-
-
 if __name__ == "__main__":
     from src.factorys.datas.createobject import ProjectFactory
     from src.config import INPUTS_DIR

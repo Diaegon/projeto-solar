@@ -3,8 +3,6 @@ from dataclasses import dataclass
 @dataclass
 class RetornoObjetosCalculados():
     #memorial descritivo
-    #dados cliente
-
     #endereço da obra
     logradouro_obra: str | None = None
     numero_obra: str | None = None
@@ -45,6 +43,7 @@ class RetornoObjetosCalculados():
     texto_tensao_individual_paineis: str | None = None
     texto_protecao_inversor: str | None = None
     gerador_texto_introducao: str | None = None
+    gerador_texto_introducao2: str | None = None
     texto_cabos: list[str] | None = None
     texto_2_protecao_inversor: list[int] | None = None
     texto_corrente_max_cabo: str | None = None
@@ -68,3 +67,10 @@ class RetornoObjetosCalculados():
     #dados projetista
     projetista: str | None = None
     cft_crea: str | None = None
+    #
+    equacao: str | None = None
+    equacao2: str | None = None
+    equacao3: str | None = None
+    equacao4: str | None = None
+    
+

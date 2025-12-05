@@ -94,6 +94,7 @@ class ConfiguracaoSistema(BaseModel):
    
     
 class Projeto(BaseModel):
+    model_config = {"use_enum_values": True}
     id_projeto: int | None
     
     numero_unidade_consumidora: str

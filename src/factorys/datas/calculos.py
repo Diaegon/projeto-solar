@@ -70,7 +70,7 @@ class Calculos:
 
    
     def calculo_queda_tensao(self, corrente_saida, inversor_tensao, cabo_energia_inversor) -> float:
-        tensao_queda = (200 * 0.0173 * 10 * corrente_saida ) / (inversor_tensao * cabo_energia_inversor)
+        tensao_queda = round((200 * 0.0173 * 10 * corrente_saida ) / (inversor_tensao * cabo_energia_inversor),2)
         return tensao_queda
 
 
