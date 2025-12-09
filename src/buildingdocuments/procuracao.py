@@ -14,12 +14,12 @@ def gerar_procuracao():
     proc.build(procuracao)
 
 if __name__ == "__main__":
-    from src.factorys.datas.createobject import ProjectFactory
+    from src.factorys.datas.createproject import ProjectFactory
     from src.config import INPUTS_DIR
     from src.factorys.texts.text_procuracao import TextoProcuracao
     from src.factorys.components.tables import TablesBuilder
     import json 
-    from src.factorys.datas.documentbuilder import ObjetosCalculados
+    from src.factorys.datas.objectbuider import ObjetosCalculados
     file = INPUTS_DIR / "input_solar.json"
     inputs = json.loads(file.read_text(encoding="utf-8"))
     

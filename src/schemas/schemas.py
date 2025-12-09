@@ -81,17 +81,19 @@ class Procurador(BaseModel):
     cidade_procurador: str  = "[CIDADE DO PROCURADOR]"
     estado_procurador: str = "[ESTADO DO PROCURADOR]"
 
+
+class QuantidadePlacas(BaseModel):
+    quantidade_placas: int
+    quantidade_placas2: int | None = None
+
 class ConfiguracaoSistema(BaseModel):
     inversor: Inversor
-    quantidade_inversor: int
-    
-    quantidade_total_placas_do_sistema: dict[str, int] = {"quantidade_placas": 10, "quantidade_placas2": 10}
-    
+    quantidade_inversor: int = 1
+    quantidade_total_placas_do_sistema: QuantidadePlacas
     placa: Placa
     placa2: Placa | None = None
 
-   
-    
+ 
 class Projeto(BaseModel):
     model_config = {"use_enum_values": True}
     id_projeto: int | None
@@ -126,4 +128,4 @@ class ProjetoTeste(BaseModel):
     ramal_energia: ramal_energia #aéreo, subterrâneo
     data_projeto: str
 
-    quantidade_sistemas_instalados: int = 2
+    quantidade_sistemas_instalados: int = 1

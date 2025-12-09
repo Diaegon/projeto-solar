@@ -5,32 +5,24 @@ from fastapi.responses import FileResponse, StreamingResponse
 from io import BytesIO
 
 from src.buildingdocuments.memorialdescritivo import MemorialDescritivo
-from src.factorys.datas.createobject import ProjectFactory
+from src.createproject import ProjectFactory
 from src.schemas.schemas import Cliente, EnderecoCliente, EnderecoObra, Projeto, ProjetoTeste, ConfiguracaoSistema
-from src.factorys.datas.documentbuilder import ObjetosCalculados
+from src.factory.datas.creatememorialobject import ObjetosCalculados
 from src.config import INPUTS_DIR
 import json 
 
 
 
-def gerar_documentos():
-
-    file2 = INPUTS_DIR / "input_necessario.json"
-    inputs_projeto = json.loads(file2.read_text(encoding="utf-8"))
-
-    projeto = ProjectFactory.factory(inputs=None, inputs_projeto=inputs_projeto)
-    retorno = ObjetosCalculados(projeto).construtor_dados_memorial()
-    return retorno
-
+IMAGE_PATH = "apollodocs_image.png"
 app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return FileResponse(path=IMAGE_PATH, media_type="image/png")
 
 
 @app.post("/input")
-def post_data(projeto: ProjetoTeste, sistema_instalado: ConfiguracaoSistema):
+async def post_data(projeto: ProjetoTeste, sistema_instalado: ConfiguracaoSistema):
     projeto_retorno = ProjectFactory.factory(inputs=None, inputs_projeto=projeto.dict(),
                                               config_sistema=sistema_instalado.dict())
     retorno = ObjetosCalculados(projeto_retorno).construtor_dados_memorial()
@@ -39,6 +31,7 @@ def post_data(projeto: ProjetoTeste, sistema_instalado: ConfiguracaoSistema):
     pdf.gerar_memorial()
 
     buffer = BytesIO(pdf.to_bytes())
+    buffer.seek(0)
 
     return StreamingResponse(
         buffer,
@@ -47,9 +40,7 @@ def post_data(projeto: ProjetoTeste, sistema_instalado: ConfiguracaoSistema):
     )
 
 
-@app.get("/pdf-memorial")
 def get_pdf_memorial(
-    
 ):
     pdf_path = "output/diagrama.pdf"
     
@@ -59,7 +50,5 @@ def get_pdf_memorial(
         filename="resultado.pdf"
     )
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+
 

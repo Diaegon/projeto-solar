@@ -6,9 +6,9 @@ from io import BytesIO
 
 from src.schemas.tableschemas import styles
 
-from src.factorys.components.tables import TablesBuilder
-from src.factorys.components.images import InsertImage
-from src.factorys.texts.text_memorial import TextoMemorial
+from src.factory.components.tablesmemorial import TablesBuilder
+from src.factory.components.imagesmemorial import InsertImage
+from src.factory.texts.text_memorial import TextoMemorial
 #from src.factorys.factorycomponents.factorytables import (tabeladedados, tabela_assinatura, tabela_localizacao, tabelapainel, tabela_parametros_tensao_inversor, tabela_parametros_frequencia_inversor, tabela_parametros_fp_inversor, tabela_queda_tensao)
 
 
@@ -190,22 +190,3 @@ class MemorialDescritivo:
         canvas.setFont('Helvetica', 9)
         width, height = doc.pagesize
         canvas.drawCentredString(width / 2.0, 1.5 * cm, text)
-
-if __name__ == "__main__":
-    from src.factorys.datas.createobject import ProjectFactory
-    from src.config import INPUTS_DIR
-    import json
-    from src.factorys.datas.documentbuilder import ObjetosCalculados
-    from src.factorys.components.tables import TablesBuilder
-    from src.factorys.texts.text_memorial import TextoMemorial
-    import pprint
-    file = INPUTS_DIR / "input_solar.json"
-    inputs = json.loads(file.read_text(encoding="utf-8"))
-   
-    projeto = ProjectFactory.factory(inputs)
-    self.dados = ObjetosCalculados(projeto).construtor_dados_memorial()
-    self.texto = TextoMemorial(self.dados)
-    self.tabela = TablesBuilder(self.dados)
-    self.imagens = InsertImage()
-
-    pprint.pprint(f"retorno:{self.dados.equacao3,}")

@@ -86,15 +86,3 @@ class TablesBuilder():
         tabela_assinatura.setStyle(estilo_assinatura)
         return tabela_assinatura
 
-if __name__ == "__main__":
-    from src.factorys.datas.createobject import ProjectFactory
-    from src.config import INPUTS_DIR
-    import json
-    from src.factorys.datas.documentbuilder import ObjetosCalculados
-    import pprint
-    file = INPUTS_DIR / "input_solar.json"
-    inputs = json.loads(file.read_text(encoding="utf-8"))
-    
-    projeto = ProjectFactory.factory(inputs)
-    retorno = ObjetosCalculados(projeto).construtor_dados_memorial()
-    pprint.pprint(f"retorno:{retorno}")

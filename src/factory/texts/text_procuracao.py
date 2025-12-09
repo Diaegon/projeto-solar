@@ -17,7 +17,7 @@ class TextoProcuracao():
 
 
 if __name__ == "__main__":
-    from src.factorys.datas.createobject import ProjectFactory
+    from src.factorys.datas.createproject import ProjectFactory
     from src.config import INPUTS_DIR
     import json 
     file = INPUTS_DIR / "input_solar.json"

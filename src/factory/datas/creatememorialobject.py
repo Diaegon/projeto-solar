@@ -1,6 +1,6 @@
 #por enquanto objeto está aqui, mas o ideal é isntanciar de outro lugar
-from src.factorys.datas.calculos import Calculos
-from src.factorys.datas.returnobject import RetornoObjetosCalculados
+from src.factory.datas.utils.calculos import Calculos
+from src.schemas.modelreturnobject import RetornoObjetosCalculados
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import locale
@@ -121,7 +121,7 @@ class ObjetosCalculados(Calculos):
         
         def monta_texto_placa(item):
 
-            quantidade_placas = list(self.projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.values())
+            quantidade_placas = list(self.projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.model_dump().values())
             marca_placas = str(self.projeto.sistema_instalado[item].placa.marca_placa)
             modelo_placas = str(self.projeto.sistema_instalado[item].placa.modelo_placa)
             potencia_placa = str(self.projeto.sistema_instalado[item].placa.potencia_placa)
@@ -140,7 +140,7 @@ class ObjetosCalculados(Calculos):
         
         def monta_texto_placa2(item):
 
-            quantidade_placas2 = list(self.projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.values())
+            quantidade_placas2 = list(self.projeto.sistema_instalado[item].quantidade_total_placas_do_sistema.model_dump().values())
             marca_placas2 = str(self.projeto.sistema_instalado[item].placa2.marca_placa)
             modelo_placas2 = str(self.projeto.sistema_instalado[item].placa2.modelo_placa)
             potencia_placa2 = str(self.projeto.sistema_instalado[item].placa2.potencia_placa)
@@ -159,7 +159,8 @@ class ObjetosCalculados(Calculos):
         
         for item in range(self.quantidade_sistemas):
             sistemas_instalados = self.projeto.sistema_instalado[item]
-            quantidade_placas_lista = list(sistemas_instalados.quantidade_total_placas_do_sistema.values())
+            quantidade_placas_lista = quantidade_placas_lista = list(sistemas_instalados.quantidade_total_placas_do_sistema.model_dump().values())
+
             texto_da_placa = monta_texto_placa(item)
             self.texto_placas_memorial += texto_da_placa
             if quantidade_placas_lista[1]:
@@ -170,7 +171,7 @@ class ObjetosCalculados(Calculos):
         sistemas_instalados = self.projeto.sistema_instalado[i]
         quantidade_final = []
         #debug
-        quantidade_placas_lista = list(sistemas_instalados.quantidade_total_placas_do_sistema.values())
+        quantidade_placas_lista = list(sistemas_instalados.quantidade_total_placas_do_sistema.model_dump().values())
 
         quantidade_placa1 = quantidade_placas_lista[0] 
         modelo = sistemas_instalados.placa.modelo_placa
@@ -202,7 +203,7 @@ class ObjetosCalculados(Calculos):
         numero_painel1 = placas_sistema[0][3]
         self.potencia_total_paineis_final += (placas_sistema[0][3] * placas_sistema[0][2]) / 1000
         numero_de_paineis = numero_painel1
-        if placas_sistema[1][3] not in [None, 0]:
+        if len(placas_sistema) > 1 and placas_sistema[1][3] not in [None, 0]:
             numero_painel2 = placas_sistema[1][3]
             self.potencia_total_paineis_final += (placas_sistema[1][3] * placas_sistema[1][2]) / 1000
             numero_de_paineis += numero_painel2
@@ -352,15 +353,5 @@ class ObjetosCalculados(Calculos):
         retorno.equacao4 = self.equacao_queda_tensao()
 
         return retorno 
-    
-if __name__ == "__main__":
-    from src.factorys.datas.createobject import ProjectFactory
-    from src.config import INPUTS_DIR
-    import json 
-    file = INPUTS_DIR / "input_solar.json"
-    inputs = json.loads(file.read_text(encoding="utf-8"))
-    
-    projeto = ProjectFactory.factory(inputs)
-    retorno = ObjetosCalculados(projeto).construtor_dados_memorial()
-    pprint.pprint(f"retorno:{retorno}")
-    pass
+
+   

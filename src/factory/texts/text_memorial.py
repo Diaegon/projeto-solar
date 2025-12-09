@@ -121,8 +121,8 @@ que satisfaz a demanda média calculada."
 
  
 if __name__ == "__main__":
-    from src.factorys.datas.createobject import ProjectFactory
-    from src.factorys.datas.documentbuilder import ObjetosCalculados
+    from src.factorys.datas.createproject import ProjectFactory
+    from src.factorys.datas.objectbuider import ObjetosCalculados
     from src.config import INPUTS_DIR
     import json 
     file = INPUTS_DIR / "input_solar.json"
