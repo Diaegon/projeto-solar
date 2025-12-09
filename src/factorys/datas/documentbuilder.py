@@ -162,7 +162,7 @@ class ObjetosCalculados(Calculos):
             quantidade_placas_lista = list(sistemas_instalados.quantidade_total_placas_do_sistema.values())
             texto_da_placa = monta_texto_placa(item)
             self.texto_placas_memorial += texto_da_placa
-            if quantidade_placas_lista[1] not in [None, 0]:
+            if quantidade_placas_lista[1]:
                 texto_da_placa2 = monta_texto_placa2(item)
                 self.texto_placas_memorial += texto_da_placa2
     #conta a quantidade de placas de um sistema considerando que um sistema só vai ter no máximo dois tipos de placa.
@@ -202,7 +202,7 @@ class ObjetosCalculados(Calculos):
         numero_painel1 = placas_sistema[0][3]
         self.potencia_total_paineis_final += (placas_sistema[0][3] * placas_sistema[0][2]) / 1000
         numero_de_paineis = numero_painel1
-        if placas_sistema[1][3]:
+        if placas_sistema[1][3] not in [None, 0]:
             numero_painel2 = placas_sistema[1][3]
             self.potencia_total_paineis_final += (placas_sistema[1][3] * placas_sistema[1][2]) / 1000
             numero_de_paineis += numero_painel2

@@ -9,9 +9,11 @@ import json
 
 
 file = INPUTS_DIR / "input_solar.json"
+file2 = INPUTS_DIR / "input_necessario.json"
 inputs = json.loads(file.read_text(encoding="utf-8"))
+inputs_projeto = json.loads(file2.read_text(encoding="utf-8"))
 
-projeto = ProjectFactory.factory(inputs)
+projeto = ProjectFactory.factory(inputs, inputs_projeto)
 retorno = ObjetosCalculados(projeto).construtor_dados_memorial()
 
 
@@ -23,9 +25,10 @@ def read_root():
     recebe = retorno
     return recebe
 
-@app.get("/pdf")
-def get_pdf():
+@app.get("/pdf-memorial")
+def get_pdf_memorial():
     pdf_path = "output/diagrama.pdf"
+    
     return FileResponse(
         pdf_path,
         media_type="application/pdf",
@@ -35,3 +38,4 @@ def get_pdf():
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
+
