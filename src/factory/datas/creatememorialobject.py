@@ -6,8 +6,12 @@ from dateutil.relativedelta import relativedelta
 import locale
 import pprint
 
-locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
-
+try:
+    locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
+except:
+    # fallback seguro para servidores como o Render
+    locale.setlocale(locale.LC_TIME, "C")
+    
 class ObjetosCalculados(Calculos):
     def __init__(self, projeto):
         #check

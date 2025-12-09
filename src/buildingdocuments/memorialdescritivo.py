@@ -9,8 +9,6 @@ from src.schemas.tableschemas import styles
 from src.factory.components.tablesmemorial import TablesBuilder
 from src.factory.components.imagesmemorial import InsertImage
 from src.factory.texts.text_memorial import TextoMemorial
-#from src.factorys.factorycomponents.factorytables import (tabeladedados, tabela_assinatura, tabela_localizacao, tabelapainel, tabela_parametros_tensao_inversor, tabela_parametros_frequencia_inversor, tabela_parametros_fp_inversor, tabela_queda_tensao)
-
 
 
 class MemorialDescritivo:
